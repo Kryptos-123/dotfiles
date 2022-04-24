@@ -1,0 +1,94 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+	interval = 1
+	separator = ""
+	markup = "pango"
+	color_good = "#b8ba25"
+	color_degraded = "#fabc2e"
+	color_bad = "#fb4833"
+}
+py3status {
+	separator = true
+	separator_block_width = 0
+	}
+order += "external_script lofi"
+order += "external_script bright"
+order += "external_script vol"
+order += "external_script mic"
+order += "arch_updates"
+order += "external_script net"
+order += "external_script bat"
+order += "external_script clock"
+external_script lofi {
+        format = "<span foreground='#547c99' background='#151515'></span><span background='#547c99'>{output}</span>"
+	script_path = "bar-lofi"
+	on_click 1 = "exec bar-lofi cycle && killall -SIGUSR1 py3status"
+	on_click 2 = "exec bar-lofi exit && killall -SIGUSR1 py3status"
+	cache_timeout = 1
+}
+external_script bright {
+        format = "<span background='#547c99'>{output}</span>"
+	on_click 4 = "exec brightness up && killall -SIGUSR1 py3status"
+	on_click 5 = "exec brightness down && killall -SIGUSR1 py3status"
+	script_path = "brightness bar"
+	cache_timeout = -1
+}
+
+external_script vol {
+        format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output}</span>"
+	on_click 1 = "exec volume mute && killall -SIGUSR1 py3status"
+	on_click 3 = "exec pavucontrol"
+	on_click 4 = "exec volume up 5 && killall -SIGUSR1 py3status"
+	on_click 5 = "exec volume down 5 && killall -SIGUSR1 py3status"
+	script_path = "volume bar"
+	cache_timeout = -1
+	}
+
+external_script mic {
+        format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output}</span>"
+	on_click 1 = "exec volume mic-mute && killall -SIGUSR1 py3status"
+	on_click 3 = "exec pavucontrol"
+	on_click 4 = "exec volume mic-up 5 && killall -SIGUSR1 py3status"
+	on_click 5 = "exec volume mic-down 5 && killall -SIGUSR1 py3status"
+	script_path = "volume mic-bar"
+	cache_timeout = -1
+	}
+
+arch_updates {
+	format = "<span foreground='#151515' background='#547c99'> </span><span foreground='#f8f8f8' background='#547c99'>  {pacman}/{aur}</span>"
+	hide_if_zero = true
+	on_click 1 = "exec pacmanupgrade"
+	on_click 2 = "exec pacparuupgrade"
+	on_click 3 = "exec paruupgrade"
+	}
+
+external_script net {
+        format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output}</span>"
+	on_click 1 = "exec networkmanager_dmenu"
+	on_click 3 = "exec nm-connection-editor"
+	script_path = "bar-net"
+	cache_timeout = 1
+	}
+
+external_script bat {
+        format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output}</span>"
+	script_path = "bar-bat"
+	cache_timeout = 10
+	}
+
+external_script clock {
+        format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output} </span>"
+	script_path = "bar-clock"
+	cache_timeout = 1
+	on_click 1 = "exec bar-clock time && killall -SIGUSR1 py3status"
+	on_click 3 = "exec bar-clock date && killall -SIGUSR1 py3status"
+	}
+

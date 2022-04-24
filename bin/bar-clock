@@ -1,0 +1,72 @@
+#!/bin/sh
+format=$(cat /home/mridul/.cache/clock)
+date=$(date +"%d-%m-%y")
+time=$(date +"%H:%M:%S")
+time12=$(date +"%I:%M:%S %p")
+case $1 in
+	date)
+		case $format in 
+	   		0)
+				echo 2 > /home/mridul/.cache/clock
+				exit
+	        	;;
+	    		1)
+				echo 3 > /home/mridul/.cache/clock
+				exit
+		        ;;
+			2)
+				echo 0 > /home/mridul/.cache/clock
+				exit
+		        ;;
+			3)
+				echo 3 > /home/mridul/.cache/clock
+				exit
+		        ;;
+			esac
+	;;
+	time)
+		case $format in 
+	   		0)
+				echo 1 > /home/mridul/.cache/clock
+				exit
+	        	;;
+	    		1)
+				echo 0 > /home/mridul/.cache/clock
+				exit
+		        ;;
+			2)
+				echo 3 > /home/mridul/.cache/clock
+				exit
+		        ;;
+			3)
+				echo 2 > /home/mridul/.cache/clock
+				exit
+		        ;;
+			esac
+	;;
+esac
+case $format in 
+	0)
+		echo "  $time"
+		echo "#f8f8f8"
+		exit
+	;;
+	1)
+		echo "  $time12"
+		echo "#f8f8f8"
+		exit
+	;;
+	2)
+		echo "  $time $date"
+		echo "#f8f8f8"
+		exit
+	;;
+	3)
+		echo "  $time12 $date"
+		echo "#f8f8f8"
+		exit
+	;;
+esac
+echo "  $time"
+echo "#f8f8f8"
+echo 0 > /home/mridul/.cache/clock

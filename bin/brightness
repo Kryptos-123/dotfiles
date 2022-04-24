@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# You can call this script like this:
+# $./brightness.sh up
+# $./brightness.sh down
+# $./brightness.sh mute
+if [ "$2" != "" ];then
+	step=$2
+else
+	step=8
+fi
+
+function get_brightness {
+    xbacklight | sed 's/\..*$//'
+}
+
+function send_notification {
+    DIR=`dirname "$0"`
+    brightness=`get_brightness`
+            if [ "$brightness" -lt "30" ]; then
+                icon_name="/usr/share/icons/Paper/48x48/notifications/notification-display-brightness-low.svg"
+            else
+                if [ "$brightness" -lt "70" ]; then
+                    icon_name="/usr/share/icons/Paper/48x48/notifications/notification-display-brightness-medium.svg"
+                else
+                    icon_name="/usr/share/icons/Paper/48x48/notifications/notification-display-brightness-full.svg"
+                fi
+            fi
+    # Make the bar with the special character ─ (it's not dash -)
+    # https://en.wikipedia.org/wiki/Box-drawing_character
+#bar=$(seq -s "─" $(($brightness/5)) | sed 's/[0-9]//g')
+bar=$(seq -s "─" $(($brightness/5)) | sed 's/[0-9]//g' | sed 's/$/─/g')
+# Send the notification
+$DIR/notify-send-custom "$brightness""     """ -i "$icon_name" -t 1000 -h int:value:"$brightness" -h string:synchronous:"$bar" --replace=555
+
+}
+
+case $1 in
+    up)
+    	brightness=`get_brightness`
+        if [ "$brightness" -lt "08" ]; then
+		brightnessctl set 08%
+		send_notification
+	else
+		brightnessctl set $step%+
+		send_notification
+	fi
+	;;
+    down)
+    	brightness=`get_brightness`
+        if [ "$brightness" -le "08" ]; then
+		brightnessctl set 1%
+	notify-send-custom "1""     """ -i "/usr/share/icons/Paper/48x48/notifications/notification-display-brightness-low.svg" -t 1000 -h int:value:"1" --replace=555
+	else
+		brightnessctl set $step%-
+		send_notification
+	fi
+	;;
+    bar)
+    	brightness=`get_brightness`
+	if [ $brightness -lt 20 ];then
+		icon=""
+	elif [ $brightness -lt 60 ];then
+		icon=""
+	elif [ $brightness -le 100 ];then
+		icon=""
+	fi
+	echo " $icon $brightness%"
+	echo "#f8f8f8"
+	;;
+esac

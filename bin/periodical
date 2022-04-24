@@ -1,0 +1,46 @@
+#!/bin/sh
+hour=$(date +"%H")
+time=$(date +"%H:%M:%S")
+date=$(date +"%e %b %Y")
+ydate=$(date --date="yesterday" +"%e %b %Y")
+to=$(cat periodical.conf | jq -r '.to')
+from=$(cat periodical.conf | jq -r '.from')
+pass=$(cat periodical.conf | jq -r '.pass')
+lockdate=$(sed -n 2p $HOME/.periodical_lock)
+lock=$(sed -n 1p $HOME/.periodical_lock)
+periodicals=(The\ Hindu The\ New\ York\ Times Linux\ Magazine)
+if ([ "$hour" -ge 10 ] && [ "$lockdate" != "$date" ] && [ "$lock" == "0" ]) || ([ "$1" == "-f" ] || [ "$1" == "--force" ]);then
+	echo 1 > $HOME/.periodical_lock
+	echo $ydate >> $HOME/.periodical_lock
+	notify-send -a Periodical\ Download "Starting Download" -i calibre
+	cat /var/log/periodical.log > /var/log/periodical.log.old
+	echo "--- $date: $time ---" > /var/log/periodical.log
+	for periodical in "${periodicals[@]}"
+	do
+		echo -e "\n--- DOWNLOADING ${periodical^^} ---\n" >> /var/log/periodical.log
+		
+		ebook-convert "$periodical.recipe" "/tmp/$periodical $(date +'%a, %e %b %Y').mobi" --authors "$(date +'%e %b %Y')" --author-sort "$(date +'%e %b %Y')" --title "$periodical" --title-sort "$periodical" >> /var/log/periodical.log
+		
+		echo -e "\n--- E-MAILING ${periodical^^} ---\n" >> /var/log/periodical.log
+		
+		calibre-smtp -a "/tmp/$periodical $(date +'%a, %e %b %Y').mobi" -s "Periodical E-mail" -u "$from" -p "$pass" -r "smtp.gmail.com" -e "SSL" $from $to "$periodical $(date +'%a, %e %b %Y')" -v >> /var/log/periodical.log 2>&1
+	done
+	echo -e "\n--- DONE ---" >> /var/log/periodical.log
+	notify-send -a Periodical\ Download "Finished Successfully" -i calibre
+	echo 0 > $HOME/.periodical_lock
+	echo $date >> $HOME/.periodical_lock
+else
+	if [ "$hour" -lt 10 ];then
+		echo "--- $date: $time ---" | tee -a /var/log/periodical.log
+		echo "Not time yet." | tee -a /var/log/periodical.log
+	fi
+	if [ "$lockdate" == "$date" ]; then
+		echo "--- $date: $time ---" | tee -a /var/log/periodical.log
+		echo "Already downloaded today." | tee -a /var/log/periodical.log
+	fi
+	if [ "$lock" == "1" ]; then
+		echo "--- $date: $time ---" | tee -a /var/log/periodical.log
+		echo "Already running" | tee -a /var/log/periodical.log
+	fi
+	exit
+fi

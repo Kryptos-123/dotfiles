@@ -1,0 +1,45 @@
+#!/bin/sh
+status=$(cat /sys/class/power_supply/BAT0/status)
+capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+charge_now=$(cat /sys/class/power_supply/BAT0/charge_now)
+charge_full=$(cat /sys/class/power_supply/BAT0/charge_full)
+current_now=$(cat /sys/class/power_supply/BAT0/current_now)
+date=$(date +"%S")
+color="#f8f8f8"
+case $status in
+    Full)
+	icon=""
+	seconds=$(cat /home/mridul/.cache/seconds)
+	time=$(date -u -d @$seconds +%T | cut -d':' -f1,2)
+	;;
+    Charging)
+	icon=""
+	seconds=$(bc <<< "scale = 10; (($charge_full - $charge_now) / $current_now) * 3600")	
+	time=$(date -u -d @$seconds +%T | cut -d':' -f1,2)
+	;;
+    Discharging)
+		seconds=$(bc <<< "scale = 10; ($charge_now / $current_now) * 3600")
+	if [ "$capacity" == "100" ]; then
+		icon=" "
+	elif [ $capacity -lt 10 ];then
+		icon=" "
+		color="#ff6d4a"
+	elif [ $capacity -lt 30 ];then
+		icon=" "
+		color="#e3aa4d"
+	elif [ $capacity -lt 60 ];then
+		icon=" "
+	elif [ $capacity -lt 100 ];then
+		icon=" "
+	else
+		icon=" "
+	fi
+	time=$(date -u -d @$seconds +%T | cut -d':' -f1,2)
+	;;
+    Unknown)
+	icon=""
+	color="#e3aa4d"
+	;;
+esac
+echo " $icon $capacity% $time"
+echo "$color"

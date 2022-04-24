@@ -1,0 +1,5 @@
+!#/bin/sh
+xinput set-prop 'DELL0978:00 04F3:30C3 Touchpad' 'libinput Scrolling Pixel Distance' 30
+xinput set-prop 'ImPS/2 Logitech Wheel Mouse' 'libinput Accel Speed' 0.40
+xinput set-prop 'ImPS/2 Logitech Wheel Mouse' 'libinput Accel Profile Enabled' 0 1
+xinput set-prop 'ImPS/2 Logitech Wheel Mouse' 'libinput Middle Emulation Enabled' 1

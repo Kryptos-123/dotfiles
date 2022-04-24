@@ -1,0 +1,40 @@
+{
+    "Type": "solar",
+    "Meta": [
+        {
+	    "SolarAzimuth": 83.66,
+	    "SolarElevation": 5.76,
+            "CrossFade": true,
+            "Time": "06:30",
+            "FileName": "0.png"
+        },
+        {
+	    "SolarAzimuth": 205.52,
+	    "SolarElevation": 67.87,
+            "CrossFade": true,
+            "Time": "13:00",
+            "FileName": "1.png"
+        },
+        {
+	    "SolarAzimuth": 205.52,
+	    "SolarElevation": 67.87,
+            "CrossFade": true,
+            "Time": "17:00",
+            "FileName": "1.png"
+        },
+        {
+	    "SolarAzimuth": 259.63,
+	    "SolarElevation": 35.11,
+            "CrossFade": true,
+            "Time": "18:30",
+            "FileName": "2.png"
+        },
+        {
+	    "SolarAzimuth": 294.36,
+	    "SolarElevation": -22.95,
+            "CrossFade": true,
+            "Time": "21:30",
+            "FileName": "3.png"
+        }
+    ]
+}

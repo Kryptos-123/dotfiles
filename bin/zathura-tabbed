@@ -1,0 +1,7 @@
+#!/bin/bash
+if test -f "/tmp/zathura"; then
+wmctrl -i -a $(cat /tmp/zathura)
+zathura "$@" -e $(cat /tmp/zathura)
+else
+tabbed -c zathura "$@" -e > /tmp/zathura && rm /tmp/zathura
+fi
