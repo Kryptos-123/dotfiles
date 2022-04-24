@@ -49,8 +49,8 @@ bindsym $mod+XF86AudioMute exec --no-startup-id volume mic-mute && $refresh_i3st
 floating_modifier $mod
 
 bindsym --release Ctrl+Mod1+Escape exec xkill
-bindsym $mod+e exec thunar
-bindsym $mod+Shift+Ctrl+e exec gksudo thunar
+bindsym $mod+e exec pcmanfm
+bindsym $mod+Shift+Ctrl+e exec gksudo pcmanfm
 bindsym $mod+l exec lofi
 bindsym $mod+z exec gtk-launch atril.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
