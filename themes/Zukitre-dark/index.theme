@@ -1,0 +1,6 @@
+[X-GNOME-Metatheme]
+Name=Zukitre-dark
+Type=X-GNOME-Metatheme
+Comment=Zukitre-dark theme patched to follow Afterglow colorscheme
+Encoding=UTF-8
+GtkTheme=Zukitre-dark
