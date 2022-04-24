@@ -81,6 +81,7 @@ external_script net {
 external_script bat {
         format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output}</span>"
 	script_path = "bar-bat"
+	on_click 1 = "exec rofi -modi drun -show drun -show-icons -drun-categories PowerMenu"
 	cache_timeout = 10
 	}
 
