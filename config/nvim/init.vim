@@ -20,4 +20,4 @@ let g:mkdp_auto_start = 1
 
 " specify browser to open preview page
 " default: ''
-let g:mkdp_browser = 'firefox-esr'
+let g:mkdp_browser = 'qutebrowser'
