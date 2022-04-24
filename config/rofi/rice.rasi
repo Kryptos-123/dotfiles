@@ -13,8 +13,8 @@
 element-icon { size: 1.8ch ; }
 * {
     /* Theme settings */
-    highlight: bold;
-    scrollbar: true;
+    highlight: bold italic;
+    scrollbar: false;
 
     /* Gruvbox dark colors */
 //    gruvbox-dark-bg0:          #151515;
