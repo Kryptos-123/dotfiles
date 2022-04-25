@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $refresh_i3status killall -SIGUSR1 py3status
 set $mod Mod4
+exec --no-startup-id autotiling
 exec --no-startup-id libinput-gestures
 exec --no-startup-id xautolock -time 10 -locker 'xset dpms force off ; lock'
 exec --no-startup-id gnome-keyring-daemon --start
