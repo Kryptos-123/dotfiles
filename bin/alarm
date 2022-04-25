@@ -2,9 +2,9 @@
 time=$1
 message=$2
 if [ "$1" == "" ]; then
-	read -p "Enter time (hh:mm:ss): " time
+    read -p "Enter time (hh:mm:ss): " time
 fi
 if [ "$2" == "" ]; then
-	read -p "Enter Message: " message
+    read -p "Enter Message: " message
 fi
 alarmd "$time" "$message" 2> /dev/null &

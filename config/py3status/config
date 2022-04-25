@@ -22,7 +22,6 @@ py3status {
 order += "external_script lofi"
 order += "external_script bright"
 order += "external_script vol"
-order += "external_script mic"
 order += "arch_updates"
 order += "external_script net"
 order += "external_script bat"
@@ -36,29 +35,20 @@ external_script lofi {
 }
 external_script bright {
         format = "<span background='#547c99'>{output}</span>"
-	on_click 4 = "exec brightness up && killall -SIGUSR1 py3status"
-	on_click 5 = "exec brightness down && killall -SIGUSR1 py3status"
+	on_click 4 = "exec brightness up"
+	on_click 5 = "exec brightness down"
 	script_path = "brightness bar"
 	cache_timeout = -1
 }
 
 external_script vol {
         format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output}</span>"
-	on_click 1 = "exec volume mute && killall -SIGUSR1 py3status"
-	on_click 3 = "exec pavucontrol"
-	on_click 4 = "exec volume up 5 && killall -SIGUSR1 py3status"
-	on_click 5 = "exec volume down 5 && killall -SIGUSR1 py3status"
+	on_click 1 = "exec volume mute"
+	on_click 3 = "exec volume cycle"
+	on_click 2 = "exec pavucontrol"
+	on_click 4 = "exec volume up 5"
+	on_click 5 = "exec volume down 5"
 	script_path = "volume bar"
-	cache_timeout = -1
-	}
-
-external_script mic {
-        format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output}</span>"
-	on_click 1 = "exec volume mic-mute && killall -SIGUSR1 py3status"
-	on_click 3 = "exec pavucontrol"
-	on_click 4 = "exec volume mic-up 5 && killall -SIGUSR1 py3status"
-	on_click 5 = "exec volume mic-down 5 && killall -SIGUSR1 py3status"
-	script_path = "volume mic-bar"
 	cache_timeout = -1
 	}
 
