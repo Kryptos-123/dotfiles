@@ -11,6 +11,7 @@ call plug#end()
 set mouse=a
 set clipboard=unnamedplus
 set completeopt=longest,menu,noselect
+set tabstop=4 shiftwidth=4 expandtab
 syntax on
 colorscheme afterglow
 
