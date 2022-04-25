@@ -39,7 +39,13 @@ case $status in
     Unknown)
     icon=""
     color="#e3aa4d"
+    exit
     ;;
 esac
-echo " $icon $capacity% $time"
-echo "$color"
+if [ "$time" != "" ]; then
+    echo " $icon $capacity% $time"
+    echo "$color"
+else
+    echo " $icon $capacity%"
+    echo "$color"
+fi
