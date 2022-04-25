@@ -2,9 +2,9 @@
 if ! date -d "$1" >/dev/null || [ "$2" == "" ] || [ "$1" == "" ] || [ "$(echo "$1" | grep -o ":" | wc -l)" != "2" ];then
 if [ "$1" == "" ];then
     notify-send "No Time"
-fi
-if ! date -d "$1" >/dev/null || [ "$(echo "$1" | grep -o ":" | wc -l)" != "2" ];then
+else if ! date -d "$1" >/dev/null || [ "$(echo "$1" | grep -o ":" | wc -l)" != "2" ];then
     notify-send "Invalid time: $1"
+fi
 fi
 if [ "$2" == "" ];then
     notify-send "No Message"

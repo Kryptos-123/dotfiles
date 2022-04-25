@@ -1,10 +1,16 @@
 #!/bin/sh
 time=$1
 message=$2
+if [ "$1" == "--gui" ]; then
+    zenity --forms --add-entry="Time (hh:mm:ss)" --add-entry="Message" --separator=, > /home/mridul/.cache/alarmgui
+    time=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 1)
+    message=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 2)
+else 
 if [ "$1" == "" ]; then
     read -p "Enter time (hh:mm:ss): " time
 fi
 if [ "$2" == "" ]; then
     read -p "Enter Message: " message
+fi
 fi
 alarmd "$time" "$message" 2> /dev/null &
