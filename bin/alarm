@@ -5,11 +5,11 @@ hour=
 minute=
 second=
 if [ "$1" == "--gui" ]; then
-    yad --form --field=Time\ \ \ \ \ \ \ \ \ \ \ \ :NUM !00..23.!1 --field=Message "" --field=:NUM !00..59.!1 --field=:RO "" --field=:NUM !00..59.!1 --columns=4 --separator=, > /home/mridul/.cache/alarmgui
-    hour=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 1)
+    yad --form --field=\ Time:LBL "" --field=:CB 00!01!02!03!04!05!06!07!08!09!10!11!12!13!14!15!16!17!18!19!20!21!22!23 --field=:CB 00!01!02!03!04!05!06!07!08!09!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59 --field=:CB 00!01!02!03!04!05!06!07!08!09!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59 --field=\ \ Message ""  --columns=5 --separator=, > /home/mridul/.cache/alarmgui
+    hour=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 2)
     minute=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 3)
-    second=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 5)
-    message=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 2)
+    second=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 4)
+    message=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 5)
     if [ "$hour" == "" ] && [ "$minute" == "" ] && [ "$second" == "" ];then
         time=
     else
