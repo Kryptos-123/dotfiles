@@ -39,7 +39,6 @@ case $status in
     Unknown)
         icon=""
         color="#e3aa4d"
-        exit
     ;;
 esac
 if [ "$time" != "" ]; then
