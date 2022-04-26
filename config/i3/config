@@ -265,4 +265,4 @@ smart_gaps on
 gaps inner 5
 for_window [class="^.*"] border pixel 0
 for_window [title="^Lofi Hip-Hop - mpv$"] move scratchpad
-for_window [class="Zenity"] floating enable
+for_window [class="Yad"] floating enable

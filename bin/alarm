@@ -1,10 +1,29 @@
 #!/bin/sh
 time=$1
 message=$2
+hour=
+minute=
+second=
 if [ "$1" == "--gui" ]; then
-    zenity --forms --add-entry="Time (hh:mm:ss)" --add-entry="Message" --separator=, > /home/mridul/.cache/alarmgui
-    time=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 1)
+    yad --form --field=Time\ \ \ \ \ \ \ \ \ \ \ \ :NUM !00..23.!1 --field=Message "" --field=:NUM !00..59.!1 --field=:RO "" --field=:NUM !00..59.!1 --columns=4 --separator=, > /home/mridul/.cache/alarmgui
+    hour=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 1)
+    minute=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 3)
+    second=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 5)
     message=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 2)
+    if [ "$hour" == "" ] && [ "$minute" == "" ] && [ "$second" == "" ];then
+        time=
+    else
+        if [ "$hour" -lt "10" ];then
+            hour=0$hour
+        fi
+        if [ "$minute" -lt "10" ];then
+            minute=0$minute
+        fi
+        if [ "$second" -lt "10" ];then
+            second=0$second
+        fi
+        time=$hour:$minute:$second
+    fi
 else 
 if [ "$1" == "" ]; then
     read -p "Enter time (hh:mm:ss): " time
