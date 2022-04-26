@@ -9,7 +9,19 @@ pass=$(cat periodical.conf | jq -r '.pass')
 lockdate=$(sed -n 2p $HOME/.periodical_lock)
 lock=$(sed -n 1p $HOME/.periodical_lock)
 periodicals=(The\ Hindu The\ New\ York\ Times Linux\ Magazine)
-if ([ "$hour" -ge 10 ] && [ "$lockdate" != "$date" ] && [ "$lock" == "0" ]) || ([ "$1" == "-f" ] || [ "$1" == "--force" ]);then
+if ([ "$hour" -ge 10 ] && [ "$lockdate" != "$date" ] && [ "$lock" == "0" ] && [ "$1" != "-f" ] && [ "$1" != "--force" ]) ;then
+    reason=0
+else
+    if ([ "$1" == "-f" ] || [ "$1" == "--force" ]);then
+    reason=1
+    fi
+fi
+if [ "$reason" == "0" ] || [ "$reason" == "1" ];then
+    if [ "$reason" == "0" ];then
+        while ! (ping -c 1 -W 1 1.1.1.1 | grep -q 'statistics') > /dev/null 2>&1; do
+        sleep 1
+        done
+    fi
     echo 1 > $HOME/.periodical_lock
     echo $ydate >> $HOME/.periodical_lock
     notify-send -a Periodical\ Download "Starting Download" -i calibre
