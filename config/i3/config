@@ -52,7 +52,6 @@ floating_modifier $mod
 bindsym --release Ctrl+Mod1+Escape exec xkill
 bindsym $mod+e exec pcmanfm
 bindsym $mod+Shift+Ctrl+e exec gksudo pcmanfm
-bindsym $mod+Shift+l exec lofi
 bindsym $mod+l exec lock
 bindsym $mod+z exec gtk-launch atril.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
@@ -247,7 +246,7 @@ client.unfocused        $darkgray $darkgray $yellow 547c99 $darkgray
 client.urgent           $red $red $white $red $red
 
 # Media player controls
-bindsym XF86AudioPlay exec play-pause && $refresh_i3status
+bindsym XF86AudioPlay exec playerctl play-pause && $refresh_i3status
 bindsym XF86AudioPause exec playerctl play-pause && $refresh_i3status
 
 bindsym XF86AudioNext exec playerctl next && $refresh_i3status
