@@ -31,7 +31,7 @@ function send_notification {
 #bar=$(seq -s "─" $(($brightness/5)) | sed 's/[0-9]//g')
 bar=$(seq -s "─" $(($brightness/5)) | sed 's/[0-9]//g' | sed 's/$/─/g')
 # Send the notification
-$DIR/notify-send-custom "$brightness""     """ -i "$icon_name" -t 1000 -h int:value:"$brightness" -h string:synchronous:"$bar" --replace=555
+dunstify "$brightness""     """ -i "$icon_name" -t 1000 -h int:value:"$brightness" -h string:synchronous:"$bar" --replace=555
 
 }
 
@@ -51,7 +51,7 @@ case $1 in
             brightness=`get_brightness`
         if [ "$brightness" -le "08" ]; then
                 brightnessctl set 1%
-        notify-send-custom "1""     """ -i "/usr/share/icons/Paper/48x48/notifications/notification-display-brightness-low.svg" -t 1000 -h int:value:"1" --replace=555
+        dunstify "1""     """ -i "/usr/share/icons/Paper/48x48/notifications/notification-display-brightness-low.svg" -t 1000 -h int:value:"1" --replace=555
         else
                 brightnessctl set $step%-
                 send_notification
