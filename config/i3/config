@@ -52,7 +52,8 @@ floating_modifier $mod
 bindsym --release Ctrl+Mod1+Escape exec xkill
 bindsym $mod+e exec pcmanfm
 bindsym $mod+Shift+Ctrl+e exec gksudo pcmanfm
-bindsym $mod+l exec lofi
+bindsym $mod+Shift+l exec lofi
+bindsym $mod+l exec lock
 bindsym $mod+z exec gtk-launch atril.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
 bindsym $mod+w exec gtk-launch firefox-esr.desktop
@@ -79,12 +80,6 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -217,7 +212,6 @@ bar {
 	height 32
 	font pango:JetBrainsMono Nerd Font Medium 12
 	status_command sleep 3 && py3status -i /home/mridul/.config/py3status/modules
-#	status_command /home/mridul/test.sh
 }
 
 bindsym Print exec flameshot full -p /home/mridul/Pictures/Screenshots
