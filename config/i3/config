@@ -216,7 +216,7 @@ bar {
 #	font pango:Hack Nerd Font Mono 12
 	height 32
 	font pango:JetBrainsMono Nerd Font Medium 12
-	status_command sleep 1 && py3status -i /home/mridul/.config/py3status/modules
+	status_command sleep 3 && py3status -i /home/mridul/.config/py3status/modules
 #	status_command /home/mridul/test.sh
 }
 
