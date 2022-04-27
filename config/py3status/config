@@ -19,22 +19,14 @@ py3status {
 	separator = true
 	separator_block_width = 0
 	}
-order += "external_script lofi"
 order += "external_script bright"
 order += "external_script vol"
 order += "arch_updates"
 order += "external_script net"
 order += "external_script bat"
 order += "external_script clock"
-external_script lofi {
-        format = "<span foreground='#547c99' background='#151515'></span><span background='#547c99'>{output}</span>"
-	script_path = "bar-lofi"
-	on_click 1 = "exec bar-lofi cycle && killall -SIGUSR1 py3status"
-	on_click 2 = "exec bar-lofi exit && killall -SIGUSR1 py3status"
-	cache_timeout = 1
-}
 external_script bright {
-        format = "<span background='#547c99'>{output}</span>"
+        format = "<span foreground='#547c99'background='#151515'></span><span background='#547c99'>{output}</span>"
 	on_click 4 = "exec brightness up"
 	on_click 5 = "exec brightness down"
 	script_path = "brightness bar"
