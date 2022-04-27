@@ -1,7 +1,0 @@
-#!/bin/sh
-function cleanup {
-    rm ~/.cache/lofi
-}
-trap cleanup EXIT
-echo 1 > ~/.cache/lofi
-mpv --profile=lofi /home/mridul/Music/lofi.mp3 --player-operation-mode=pseudo-gui
