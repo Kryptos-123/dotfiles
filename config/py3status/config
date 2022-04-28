@@ -26,7 +26,7 @@ order += "external_script net"
 order += "external_script bat"
 order += "external_script clock"
 external_script bright {
-        format = "<span foreground='#547c99'background='#151515'></span><span background='#547c99'>{output}</span>"
+        format = "<span foreground='#151515'background='#151515'></span><span background='#151515'>{output}</span>"
 	on_click 4 = "exec brightness up"
 	on_click 5 = "exec brightness down"
 	script_path = "brightness bar"
@@ -34,7 +34,7 @@ external_script bright {
 }
 
 external_script vol {
-        format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output}</span>"
+        format = "<span foreground='#151515'background='#151515'> </span><span background='#151515'>{output}</span>"
 	on_click 1 = "exec volume bar-mute"
 	on_click 3 = "exec volume cycle"
 	on_click 2 = "exec pavucontrol"
@@ -45,7 +45,7 @@ external_script vol {
 	}
 
 arch_updates {
-	format = "<span foreground='#151515' background='#547c99'> </span><span foreground='#f8f8f8' background='#547c99'>  {pacman}/{aur}</span>"
+	format = "<span foreground='#151515' background='#151515'> </span><span foreground='#f8f8f8' background='#151515'>  {pacman}/{aur}</span>"
 	hide_if_zero = true
 	on_click 1 = "exec pacmanupgrade"
 	on_click 2 = "exec pacparuupgrade"
@@ -53,7 +53,7 @@ arch_updates {
 	}
 
 external_script net {
-        format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output}</span>"
+        format = "<span foreground='#151515'background='#151515'> </span><span background='#151515'>{output}</span>"
 	on_click 1 = "exec networkmanager_dmenu"
 	on_click 3 = "exec nm-connection-editor"
 	script_path = "bar-net"
@@ -61,14 +61,14 @@ external_script net {
 	}
 
 external_script bat {
-        format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output}</span>"
+        format = "<span foreground='#151515'background='#151515'> </span><span background='#151515'>{output}</span>"
 	script_path = "bar-bat"
 	on_click 1 = "exec rofi -modi drun -show drun -show-icons -drun-categories PowerMenu"
 	cache_timeout = 10
 	}
 
 external_script clock {
-        format = "<span foreground='#151515'background='#547c99'> </span><span background='#547c99'>{output} </span>"
+        format = "<span foreground='#151515'background='#151515'> </span><span background='#151515'>{output} </span>"
 	script_path = "bar-clock"
 	cache_timeout = 1
 	on_click 1 = "exec bar-clock time && killall -SIGUSR1 py3status"
