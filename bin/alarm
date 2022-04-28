@@ -13,15 +13,6 @@ if [ "$1" == "--gui" ]; then
     if [ "$hour" == "" ] && [ "$minute" == "" ] && [ "$second" == "" ];then
         time=
     else
-        if [ "$hour" -lt "10" ];then
-            hour=0$hour
-        fi
-        if [ "$minute" -lt "10" ];then
-            minute=0$minute
-        fi
-        if [ "$second" -lt "10" ];then
-            second=0$second
-        fi
         time=$hour:$minute:$second
     fi
 else 
