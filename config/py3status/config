@@ -45,7 +45,7 @@ external_script vol {
 	}
 
 arch_updates {
-	format = "   {pacman}/{aur}"
+	format = "  {pacman}/{aur}"
 	hide_if_zero = true
 	on_click 1 = "exec pacmanupgrade"
 	on_click 2 = "exec pacparuupgrade"
