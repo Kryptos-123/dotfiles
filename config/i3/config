@@ -202,8 +202,8 @@ bar {
 	colors {
 		#background #1f444d
 		background #151515
-		focused_workspace  #f8f8f8 #151515 #f8f8f8
-		inactive_workspace #151515 #151515 #f8f8f8
+		focused_workspace  #151515 #151515 #f8f8f8
+		inactive_workspace #151515 #151515 #606060
 		urgent_workspace  #a53c23 #a53c23 #f8f8f8
 	}
         position top
