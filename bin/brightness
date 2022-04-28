@@ -7,7 +7,7 @@
 if [ "$2" != "" ];then
         step=$2
 else
-        step=8
+        step=5
 fi
 
 function get_brightness {

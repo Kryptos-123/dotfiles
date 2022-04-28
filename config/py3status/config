@@ -27,8 +27,8 @@ order += "external_script bat"
 order += "external_script clock"
 external_script bright {
         format = "{output}"
-	on_click 4 = "exec brightness up"
-	on_click 5 = "exec brightness down"
+	on_click 4 = "exec brightness up 8"
+	on_click 5 = "exec brightness down 8"
 	script_path = "brightness bar"
 	cache_timeout = -1
 }
