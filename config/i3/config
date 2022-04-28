@@ -202,7 +202,7 @@ bar {
 	colors {
 		#background #1f444d
 		background #151515
-		focused_workspace  #547c99 #151515 #f8f8f8
+		focused_workspace  #f8f8f8 #151515 #f8f8f8
 		inactive_workspace #151515 #151515 #f8f8f8
 		urgent_workspace  #a53c23 #a53c23 #f8f8f8
 	}
@@ -210,7 +210,7 @@ bar {
 #	font pango:Hack Nerd Font Mono 12
 	height 32
 	font pango:JetBrainsMono Nerd Font Medium 12
-	status_command sleep 3 && py3status -i /home/mridul/.config/py3status/modules
+	status_command py3status -i /home/mridul/.config/py3status/modules
 }
 
 bindsym Print exec flameshot full -p /home/mridul/Pictures/Screenshots
