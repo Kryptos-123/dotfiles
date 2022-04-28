@@ -13,7 +13,7 @@ case $status in
         time=$(date -u -d @$seconds +%T | cut -d':' -f1,2)
     ;;
     Charging)
-        icon=""
+        icon=" "
         seconds=$(bc <<< "scale = 10; (($charge_full - $charge_now) / $current_now) * 3600")    
         time=$(date -u -d @$seconds +%T | cut -d':' -f1,2)
     ;;
