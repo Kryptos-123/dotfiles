@@ -70,4 +70,22 @@ case $1 in
         echo " $icon $brightness%"
         echo "#f8f8f8"
         ;;
+    bar-up)
+            brightness=`get_brightness`
+        if [ "$brightness" -lt "08" ]; then
+                brightnessctl set 08%
+        else
+                brightnessctl set $step%+
+        fi
+        py3-cmd refresh external_script bright
+        ;;
+    bar-down)
+            brightness=`get_brightness`
+        if [ "$brightness" -le "08" ]; then
+                brightnessctl set 1%
+        else
+                brightnessctl set $step%-
+        fi
+        py3-cmd refresh external_script bright
+        ;;
 esac

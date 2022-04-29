@@ -18,18 +18,21 @@ if [ "$1" == "bar" ];then
     esac
     exit
 fi
-
+if [ "$1" == "bar-toggle" ]; then
 playerctl play-pause
+py3-cmd refresh external_script playosd
+exit
+fi
 case $status in
     "Playing")
         dunstify "$title" "$artist" -t 1000 --replace=555 -i "/home/mridul/.icons/gtk-media-pause.svg"
-        py3-cmd refresh external_script playosd
     ;;
     "Paused")
         dunstify "$title" "$artist" -t 1000 --replace=555 -i "/home/mridul/.icons/gtk-media-play-ltr.svg"
-        py3-cmd refresh external_script playosd
     ;;
     "No players found")
         dunstify "$status" -t 1000 --replace=555 -i "/home/mridul/.icons/stock_calc-cancel.svg"
     ;;
 esac
+playerctl play-pause
+py3-cmd refresh external_script playosd

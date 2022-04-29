@@ -29,15 +29,15 @@ order += "external_script clock"
 
 external_script playosd {
         format = " {output}"
-	on_click 1 = "exec playosd"
+	on_click 1 = "exec playosd bar-toggle"
 	script_path = "playosd bar"
 	cache_timeout = 1
 	}
 
 external_script bright {
         format = "{output}"
-	on_click 4 = "exec brightness up 8"
-	on_click 5 = "exec brightness down 8"
+	on_click 4 = "exec brightness bar-up 8"
+	on_click 5 = "exec brightness bar-down 8"
 	script_path = "brightness bar"
 	cache_timeout = -1
 }
