@@ -30,6 +30,8 @@ order += "external_script clock"
 external_script playosd {
         format = " {output}"
 	on_click 1 = "exec playosd bar-toggle"
+    on_click 4 = "exec playosd bar-up"
+    on_click 5 = "exec playosd bar-down"
 	script_path = "playosd bar"
 	cache_timeout = 1
 	}
