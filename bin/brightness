@@ -45,7 +45,7 @@ case $1 in
                 brightnessctl set $step%+
                 send_notification
         fi
-        killall -SIGUSR1 py3status
+        py3-cmd refresh external_script bright
         ;;
     down)
             brightness=`get_brightness`
@@ -56,13 +56,13 @@ case $1 in
                 brightnessctl set $step%-
                 send_notification
         fi
-        killall -SIGUSR1 py3status
+        py3-cmd refresh external_script bright
         ;;
     bar)
             brightness=`get_brightness`
-        if [ $brightness -lt 20 ];then
+        if [ $brightness -lt 30 ];then
                 icon=""
-        elif [ $brightness -lt 60 ];then
+        elif [ $brightness -lt 70 ];then
                 icon=""
         elif [ $brightness -le 100 ];then
                 icon=""

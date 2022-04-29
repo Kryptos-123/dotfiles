@@ -93,13 +93,13 @@ case $1 in
         # Up the volume (+ $step%)
         amixer -D pulse sset Capture $step%+ > /dev/null
         send_notification_mic
-        killall -SIGUSR1 py3status
+        py3-cmd refresh external_script vol
         ;;
     mic-down)
         amixer -D pulse set Capture cap > /dev/null
         amixer -D pulse sset Capture $step%- > /dev/null
         send_notification_mic
-        killall -SIGUSR1 py3status
+        py3-cmd refresh external_script vol
         ;;
     up)
         # Set the volume on (if it was muted)
@@ -107,7 +107,7 @@ case $1 in
         # Up the volume (+ $step%)
         amixer -D pulse sset Master $step%+ > /dev/null
         send_notification
-        killall -SIGUSR1 py3status
+        py3-cmd refresh external_script vol
         ;;
     bar-up)
         case $cycle in
@@ -117,14 +117,14 @@ case $1 in
             # Up the volume (+ $step%)
             amixer -D pulse sset Master $step%+ > /dev/null
             send_notification
-            killall -SIGUSR1 py3status
+            py3-cmd refresh external_script vol
             ;;
         1)
             amixer -D pulse set Capture cap > /dev/null
             # Up the volume (+ $step%)
             amixer -D pulse sset Capture $step%+ > /dev/null
             send_notification_mic
-            killall -SIGUSR1 py3status
+            py3-cmd refresh external_script vol
         ;;
     esac
         ;;
@@ -136,14 +136,14 @@ case $1 in
             # Up the volume (+ $step%)
             amixer -D pulse sset Master $step%- > /dev/null
             send_notification
-            killall -SIGUSR1 py3status
+            py3-cmd refresh external_script vol
             ;;
         1)
             amixer -D pulse set Capture cap > /dev/null
             # Up the volume (+ $step%)
             amixer -D pulse sset Capture $step%- > /dev/null
             send_notification_mic
-            killall -SIGUSR1 py3status
+            py3-cmd refresh external_script vol
         ;;
     esac
         ;;
@@ -157,7 +157,7 @@ case $1 in
         else
             send_notification
         fi
-        killall -SIGUSR1 py3status
+        py3-cmd refresh external_script vol
             ;;
         1)
             amixer -D pulse set Capture 1+ toggle > /dev/null
@@ -166,7 +166,7 @@ case $1 in
             else
                 send_notification_mic
             fi
-            killall -SIGUSR1 py3status
+            py3-cmd refresh external_script vol
         ;;
     esac
         ;;
@@ -174,7 +174,7 @@ case $1 in
         amixer -D pulse set Master on > /dev/null
         amixer -D pulse sset Master $step%- > /dev/null
         send_notification
-        killall -SIGUSR1 py3status
+        py3-cmd refresh external_script vol
         ;;
     mic-mute)
             # Toggle mute
@@ -184,7 +184,7 @@ case $1 in
         else
             send_notification_mic
         fi
-        killall -SIGUSR1 py3status
+        py3-cmd refresh external_script vol
         ;;
     mute)
             # Toggle mute
@@ -194,7 +194,7 @@ case $1 in
         else
             send_notification
         fi
-        killall -SIGUSR1 py3status
+        py3-cmd refresh external_script vol
         ;;
     bar)
         case $cycle in
