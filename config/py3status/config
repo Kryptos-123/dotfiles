@@ -19,12 +19,21 @@ py3status {
 	separator = true
 	separator_block_width = 0
 	}
+order += "external_script playosd"
 order += "external_script bright"
 order += "external_script vol"
 order += "arch_updates"
 order += "external_script net"
 order += "external_script bat"
 order += "external_script clock"
+
+external_script playosd {
+        format = " {output}"
+	on_click 1 = "exec playosd"
+	script_path = "playosd bar"
+	cache_timeout = 1
+	}
+
 external_script bright {
         format = "{output}"
 	on_click 4 = "exec brightness up 8"

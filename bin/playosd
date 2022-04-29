@@ -2,13 +2,32 @@
 status=$(playerctl status 2>&1)
 title=$(playerctl metadata title)
 artist=$(playerctl metadata artist)
+
+if [ "$1" == "bar" ];then 
+    length=$(echo $title | wc -m)
+    if [ "$length" -gt 10 ]; then
+        title=$(echo $title | cut -c1-10)..
+    fi
+    case $status in
+        "Playing")
+            echo "  $title "
+        ;;
+        "Paused")
+            echo "  $title "
+        ;;
+    esac
+    exit
+fi
+
 playerctl play-pause
 case $status in
     "Playing")
         dunstify "$title" "$artist" -t 1000 --replace=555 -i "/home/mridul/.icons/gtk-media-pause.svg"
+        py3-cmd refresh external_script playosd
     ;;
     "Paused")
         dunstify "$title" "$artist" -t 1000 --replace=555 -i "/home/mridul/.icons/gtk-media-play-ltr.svg"
+        py3-cmd refresh external_script playosd
     ;;
     "No players found")
         dunstify "$status" -t 1000 --replace=555 -i "/home/mridul/.icons/stock_calc-cancel.svg"
