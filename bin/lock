@@ -1,7 +1,10 @@
-#!/usr/bin/env bash
-
+#!/bin/sh
+if [ "$1" == "--rofi" ]; then
+pkill rofi
+fi
 tmpbg='/tmp/screen.png'
 scrot "$tmpbg"
 convert -scale 40% -blur 0x3 -resize 250% "$tmpbg" "$tmpbg"
 i3lock -f -i "$tmpbg"
+xset dpms force off
 rm $tmpbg
