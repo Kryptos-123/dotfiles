@@ -33,11 +33,11 @@ function send_notification {
 #bar=$(seq -s "─" $(($volume/5)) | sed 's/[0-9]//g')
 if [ "$volume" = "0" ]; then
         icon_name="/usr/share/icons/Paper/48x48/notifications/notification-audio-volume-muted.svg"
-dunstify "$volume""      " -i "$icon_name" -t 1000 -h int:value:"$volume" -h string:synchronous:"─" --replace=666
+dunstify "$volume""      " -i "$icon_name" -t 1000 -h int:value:"$volume" -h string:synchronous:"─" --replace=555
     else
         if [  "$volume" -lt "10" ]; then
              icon_name="/usr/share/icons/Paper/48x48/notifications/notification-audio-volume-low.svg"
-dunstify "$volume""     " -i "$icon_name" --replace=666 -t 1000
+dunstify "$volume""     " -i "$icon_name" --replace=555 -t 1000
     else
         if [ "$volume" -lt "30" ]; then
             icon_name="/usr/share/icons/Paper/48x48/notifications/notification-audio-volume-low.svg"
@@ -52,7 +52,7 @@ dunstify "$volume""     " -i "$icon_name" --replace=666 -t 1000
 fi
 bar=$(seq -s "─" $(($volume/3)) | sed 's/[0-9]//g' | sed 's/$/─/g')
 # Send the notification
-dunstify "$volume""     """ -i "$icon_name" -t 1000 -h int:value:"$volume" -h string:synchronous:"$bar" --replace=666
+dunstify "$volume""     """ -i "$icon_name" -t 1000 -h int:value:"$volume" -h string:synchronous:"$bar" --replace=555
 
 }
 
@@ -60,11 +60,11 @@ function send_notification_mic {
         volume_mic=`get_volume_mic`
     if [ "$volume_mic" = "0" ]; then
             icon_name="/home/mridul/Desktop/mic-volume-muted.svg"
-    dunstify "$volume_mic""      " -i "$icon_name" -t 1000 -h int:value:"$volume_mic" -h string:synchronous:"─" --replace=666
+    dunstify "$volume_mic""      " -i "$icon_name" -t 1000 -h int:value:"$volume_mic" -h string:synchronous:"─" --replace=555
         else
             if [  "$volume_mic" -lt "10" ]; then
                  icon_name="/home/mridul/.icons/mic-volume-low.svg"
-    dunstify "$volume_mic""     " -i "$icon_name" --replace=666 -t 1000
+    dunstify "$volume_mic""     " -i "$icon_name" --replace=555 -t 1000
         else
             if [ "$volume_mic" -lt "30" ]; then
                 icon_name="/home/mridul/.icons/mic-volume-low.svg"
@@ -82,7 +82,7 @@ function send_notification_mic {
 #bar=$(seq -s "─" $(($volume_mic/5)) | sed 's/[0-9]//g')
 bar_mic=$(seq -s "─" $(($volume_mic/3)) | sed 's/[0-9]//g' | sed 's/$/─/g')
 # Send the notification
-dunstify "$volume_mic""     """ -i "$icon_name" -t 1000 -h int:value:"$volume_mic" -h string:synchronous:"$bar_mic" --replace=666
+dunstify "$volume_mic""     """ -i "$icon_name" -t 1000 -h int:value:"$volume_mic" -h string:synchronous:"$bar_mic" --replace=555
 
 }
 
@@ -153,7 +153,7 @@ case $1 in
             # Toggle mute
         amixer -D pulse set Master 1+ toggle > /dev/null
         if is_mute ; then
-        dunstify -i "/usr/share/icons/Paper/48x48/notifications/notification-audio-volume-muted.svg" --replace=666 -u normal "Mute" -t 1000
+        dunstify -i "/usr/share/icons/Paper/48x48/notifications/notification-audio-volume-muted.svg" --replace=555 -u normal "Mute" -t 1000
         else
             send_notification
         fi
@@ -162,7 +162,7 @@ case $1 in
         1)
             amixer -D pulse set Capture 1+ toggle > /dev/null
             if is_mute_mic ; then
-            dunstify -i "/home/mridul/Desktop/mic-volume-muted.svg" --replace=666 -u normal "Mic Mute" -t 1000
+            dunstify -i "/home/mridul/Desktop/mic-volume-muted.svg" --replace=555 -u normal "Mic Mute" -t 1000
             else
                 send_notification_mic
             fi
@@ -180,7 +180,7 @@ case $1 in
             # Toggle mute
         amixer -D pulse set Capture 1+ toggle > /dev/null
         if is_mute_mic ; then
-        dunstify -i "/home/mridul/Desktop/mic-volume-muted.svg" --replace=666 -u normal "Mic Mute" -t 1000
+        dunstify -i "/home/mridul/Desktop/mic-volume-muted.svg" --replace=555 -u normal "Mic Mute" -t 1000
         else
             send_notification_mic
         fi
@@ -190,7 +190,7 @@ case $1 in
             # Toggle mute
         amixer -D pulse set Master 1+ toggle > /dev/null
         if is_mute ; then
-        dunstify -i "/usr/share/icons/Paper/48x48/notifications/notification-audio-volume-muted.svg" --replace=666 -u normal "Mute" -t 1000
+        dunstify -i "/usr/share/icons/Paper/48x48/notifications/notification-audio-volume-muted.svg" --replace=555 -u normal "Mute" -t 1000
         else
             send_notification
         fi
