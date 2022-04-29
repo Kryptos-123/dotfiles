@@ -1,0 +1,16 @@
+#!/bin/bash
+status=$(playerctl status 2>&1)
+title=$(playerctl metadata title)
+artist=$(playerctl metadata artist)
+playerctl play-pause
+case $status in
+    "Playing")
+        dunstify "$title" "$artist" -t 1000 --replace=555 -i "/home/mridul/.icons/gtk-media-pause.svg"
+    ;;
+    "Paused")
+        dunstify "$title" "$artist" -t 1000 --replace=555 -i "/home/mridul/.icons/gtk-media-play-ltr.svg"
+    ;;
+    "No players found")
+        dunstify "$status" -t 1000 --replace=555 -i "/home/mridul/.icons/stock_calc-cancel.svg"
+    ;;
+esac
