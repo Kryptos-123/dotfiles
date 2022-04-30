@@ -133,9 +133,9 @@ label {
     button label:disabled {
       color: inherit; }
   label.error {
-    color: #cc0000; }
+    color: #a53c23; }
     label.error:disabled {
-      color: rgba(204, 0, 0, 0.5); }
+      color: rgba(165, 60, 35, 0.5); }
 
 .dim-label, .titlebar:not(headerbar) .subtitle,
 headerbar .subtitle, spinbutton.vertical > text > text > placeholder, spinbutton:not(.vertical) > text > placeholder,
@@ -293,7 +293,7 @@ entry {
       color: #f8f8f8; }
   spinbutton.vertical > text.error, spinbutton.error:not(.vertical),
   entry.error {
-    color: #cc0000;
+    color: #a53c23;
     transition-property: outline, outline-width, outline-offset, outline-color;
     transition-duration: 300ms;
     animation-timing-function: ease-in-out; }
@@ -303,15 +303,15 @@ entry {
       outline-offset: 4px; }
     spinbutton.vertical > text.error:focus-within, spinbutton.error:focus-within:not(.vertical),
     entry.error:focus-within {
-      outline-color: rgba(204, 0, 0, 0.5);
+      outline-color: rgba(165, 60, 35, 0.5);
       outline-width: 2px;
       outline-offset: -2px; }
     spinbutton.vertical > text.error > selection, spinbutton.error:not(.vertical) > selection,
     entry.error > selection {
-      background-color: #cc0000; }
+      background-color: #a53c23; }
   spinbutton.vertical > text.warning, spinbutton.warning:not(.vertical),
   entry.warning {
-    color: #f57900;
+    color: #d3a04d;
     transition-property: outline, outline-width, outline-offset, outline-color;
     transition-duration: 300ms;
     animation-timing-function: ease-in-out; }
@@ -321,12 +321,12 @@ entry {
       outline-offset: 4px; }
     spinbutton.vertical > text.warning:focus-within, spinbutton.warning:focus-within:not(.vertical),
     entry.warning:focus-within {
-      outline-color: rgba(245, 121, 0, 0.5);
+      outline-color: rgba(211, 160, 77, 0.5);
       outline-width: 2px;
       outline-offset: -2px; }
     spinbutton.vertical > text.warning > selection, spinbutton.warning:not(.vertical) > selection,
     entry.warning > selection {
-      background-color: #f57900; }
+      background-color: #d3a04d; }
   spinbutton.vertical > text > image, spinbutton:not(.vertical) > image,
   entry > image {
     color: #cfcfcf; }
@@ -420,7 +420,7 @@ spinbutton.vertical.linked > text:drop(active):not(:only-child) + combobox > box
 
 spinbutton.vertical > text.error, spinbutton.error:not(.vertical),
 entry.error {
-  color: #cc0000; }
+  color: #a53c23; }
 
 treeview entry:focus-within:dir(rtl), treeview entry:focus-within:dir(ltr) {
   background-color: #2d2d2d;
@@ -866,8 +866,8 @@ button.suggested-action {
 button.destructive-action {
   color: white;
   outline-color: rgba(255, 255, 255, 0.3);
-  border-color: #570b0e;
-  background-image: linear-gradient(to top, #ae151c 2px, #b2161d);
+  border-color: #511d11;
+  background-image: linear-gradient(to top, #a13a22 2px, #a53c23);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
   transition-property: outline, outline-width, outline-offset, outline-color;
   transition-duration: 300ms;
@@ -887,19 +887,19 @@ button.destructive-action {
     background-color: transparent;
     background-image: none;
     box-shadow: none;
-    color: #b2161d; }
+    color: #a53c23; }
   
   button.destructive-action:hover {
     color: white;
-    border-color: #6e0d12;
-    background-image: linear-gradient(to top, #a0131a 20%, #a5141a 90%);
+    border-color: #662516;
+    background-image: linear-gradient(to top, #94361f 20%, #983720 90%);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07); }
   
   button.destructive-action:active,
   button.destructive-action:checked {
     color: white;
-    border-color: #6e0d12;
-    background-image: image(#8a1116);
+    border-color: #662516;
+    background-image: image(#7f2e1b);
     box-shadow: none; }
   
   button.destructive-action.flat:disabled {
@@ -907,7 +907,7 @@ button.destructive-action {
     background-color: transparent;
     background-image: none;
     box-shadow: none;
-    color: rgba(178, 22, 29, 0.8); }
+    color: rgba(165, 60, 35, 0.8); }
   
   button.destructive-action:disabled {
     color: #8d8d8d;
@@ -916,28 +916,28 @@ button.destructive-action {
     
     button.destructive-action:disabled:active,
     button.destructive-action:disabled:checked {
-      color: #cea1a3;
-      border-color: #6e0d12;
-      background-image: image(#84151a);
+      color: #caaca5;
+      border-color: #662516;
+      background-image: image(#7b301f);
       box-shadow: none; }
   .osd button.destructive-action {
     color: #f8f8f8;
     outline-color: rgba(255, 255, 255, 0.3);
     border-color: rgba(0, 0, 0, 0.7);
     background-color: transparent;
-    background-image: image(rgba(178, 22, 29, 0.5));
+    background-image: image(rgba(165, 60, 35, 0.5));
     background-clip: padding-box; }
     .osd button.destructive-action:hover {
       color: white;
       border-color: rgba(0, 0, 0, 0.7);
       background-color: transparent;
-      background-image: image(rgba(178, 22, 29, 0.7));
+      background-image: image(rgba(165, 60, 35, 0.7));
       background-clip: padding-box; }
     .osd button.destructive-action:active:backdrop, .osd button.destructive-action:active, .osd button.destructive-action:checked:backdrop, .osd button.destructive-action:checked {
       color: white;
       border-color: rgba(0, 0, 0, 0.7);
       background-color: transparent;
-      background-image: image(#b2161d);
+      background-image: image(#a53c23);
       background-clip: padding-box;
       box-shadow: none; }
     .osd button.destructive-action:disabled:backdrop, .osd button.destructive-action:disabled {
@@ -1137,8 +1137,8 @@ list > row button.image-button:not(.flat) {
   list > row button.image-button:not(.flat).destructive-action {
     color: white;
     outline-color: rgba(255, 255, 255, 0.3);
-    border-color: #570b0e;
-    background-image: linear-gradient(to top, #ae151c 2px, #b2161d);
+    border-color: #511d11;
+    background-image: linear-gradient(to top, #a13a22 2px, #a53c23);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
     transition-property: outline, outline-width, outline-offset, outline-color;
     transition-duration: 300ms;
@@ -3075,14 +3075,14 @@ levelbar > trough {
 levelbar > trough > block {
   border: 1px solid; }
   levelbar > trough > block.low {
-    border-color: #f57900;
-    background-color: #f57900; }
+    border-color: #d3a04d;
+    background-color: #d3a04d; }
   levelbar > trough > block.high, levelbar > trough > block:not(.empty) {
     border-color: #547c99;
     background-color: #547c99; }
   levelbar > trough > block.full {
-    border-color: #26ab62;
-    background-color: #26ab62; }
+    border-color: #7b9246;
+    background-color: #7b9246; }
   levelbar > trough > block.empty {
     background-color: #151515;
     border-color: #151515; }
@@ -4023,9 +4023,9 @@ widgets main borders color on backdrop windows */
 @define-color unfocused_borders #0e0e0e;
 /*
 these are pretty self explicative */
-@define-color warning_color #f57900;
-@define-color error_color #cc0000;
-@define-color success_color #26ab62;
+@define-color warning_color #d3a04d;
+@define-color error_color #a53c23;
+@define-color success_color #7b9246;
 /*
 these colors are exported for the window manager and shouldn't be used in applications,
 read if you used those and something break with a version upgrade you're on your own... */
