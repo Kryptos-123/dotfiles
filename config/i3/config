@@ -130,6 +130,7 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+v workspace VM
 
 # move focused container to workspace
 bindsym $mod+Shift+Ctrl+1 move container to workspace number $ws1
@@ -250,4 +251,4 @@ gaps inner 5
 for_window [class="^.*"] border pixel 0
 for_window [title="^Lofi Hip-Hop - mpv$"] move scratchpad
 for_window [class="Yad"] floating enable
-for_window [class="Virt-viewer"] move container to workspace number $ws10, workspace number $ws10
+for_window [class="Virt-viewer"] move container to workspace VM, workspace VM
