@@ -1,6 +1,6 @@
 [X-GNOME-Metatheme]
-Name=Patched-Adwaita
+Name=Adwaita-Afterglow
 Type=X-GNOME-Metatheme
 Comment=Patched Adwaita
 Encoding=UTF-8
-GtkTheme=Patched-Adwaita
+GtkTheme=Adwaita-Afterglow
