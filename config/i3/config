@@ -86,12 +86,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
@@ -256,3 +250,4 @@ gaps inner 5
 for_window [class="^.*"] border pixel 0
 for_window [title="^Lofi Hip-Hop - mpv$"] move scratchpad
 for_window [class="Yad"] floating enable
+for_window [class="Virt-viewer"] move container to workspace number $ws10, workspace number $ws10
