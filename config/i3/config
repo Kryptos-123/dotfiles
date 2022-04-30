@@ -130,7 +130,6 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
-bindsym $mod+v workspace VM
 
 # move focused container to workspace
 bindsym $mod+Shift+Ctrl+1 move container to workspace number $ws1
@@ -213,6 +212,7 @@ bindsym Control+Print exec flameshot full -c
 bindsym Control+Shift+Print exec flameshot gui
 bindsym Shift+Print exec flameshot gui
 bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+bindsym $mod+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym XF86MonBrightnessUp exec brightness up && $refresh_i3status
 bindsym XF86MonBrightnessDown exec brightness down && $refresh_i3status
 
