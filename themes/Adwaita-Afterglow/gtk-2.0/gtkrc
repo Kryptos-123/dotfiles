@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-gtk-color-scheme = "fg_color:#eeeeec\nbg_color:#222222\ntext_color:#f8f8f8\nbase_color:#292929\nselected_fg_color:#ffffff\nselected_bg_color:#547c99\ninsensitive_fg_color:#ffffff\ninsensitive_bg_color:#215d9c\ntooltip_fg_color:#ffffff\ntooltip_bg_color:#000000"
+gtk-color-scheme = "fg_color:#eeeeec\nbg_color:#222222\ntext_color:#f8f8f8\nbase_color:#2d2d2d\nselected_fg_color:#ffffff\nselected_bg_color:#547c99\ninsensitive_fg_color:#ffffff\ninsensitive_bg_color:#215d9c\ntooltip_fg_color:#ffffff\ntooltip_bg_color:#000000"
 
 gtk-icon-sizes = "gtk-button=16,16:\ngtk-dnd=16,16:\npanel=16,16:\ngtk-small-toolbar=16,16:\ngtk-large-toolbar=24,24:"
 
@@ -130,7 +130,7 @@ style "murrine-default" {
   glazestyle     = 0   # 0 = flat highlight, 1 = curved highlight,
                  # 2 = concave style, 3 = top curved highlight,
                  # 4 = beryl highlight
-  gradient_shades   = { 1.01, 1.0, 1.0, .99 }
+  gradient_shades = {1.55, 1.40, 1.40, 1.35}
   handlestyle     = 0   # three simple lines
   highlight_shade   = 1.0  # set highlight amount for buttons or widgets
   lightborder_shade  = 1.2  # sets lightborder amount for buttons or widgets
@@ -184,7 +184,7 @@ style "murrine-button" = "murrine-wider" {
  bg[SELECTED] = @bg_color
 
  engine "murrine" {
- gradient_shades = {1.05, .99, .99, .91}
+ gradient_shades = {1.55, 1.40, 1.40, 1.35}
     contrast    = .72
  }
 
