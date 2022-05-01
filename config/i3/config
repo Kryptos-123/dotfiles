@@ -46,6 +46,8 @@ bindsym XF86AudioMute exec --no-startup-id volume mute
 bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id volume mic-up
 bindsym $mod+XF86AudioLowerVolume exec --no-startup-id volume mic-down
 bindsym $mod+XF86AudioMute exec --no-startup-id volume mic-mute
+bindsym XF86MonBrightnessUp exec brightness up
+bindsym XF86MonBrightnessDown exec brightness down
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -214,8 +216,6 @@ bindsym Control+Shift+Print exec flameshot gui
 bindsym Shift+Print exec flameshot gui
 bindsym $mod+c exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
-bindsym XF86MonBrightnessUp exec brightness up && $refresh_i3status
-bindsym XF86MonBrightnessDown exec brightness down && $refresh_i3status
 
 # Make the currently focused window a scratchpad
 bindsym $mod+minus move scratchpad
