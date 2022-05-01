@@ -1,2 +1,6 @@
 #!/bin/sh
-kitty sh -c 'paru -Sua --noconfirm && killall -SIGUSR1 py3status && printf "%s " "Press enter to exit"; read ans'
+workspace=$(i3-msg -t get_workspaces \
+  | jq '.[] | select(.focused==true).name' \
+  | cut -d"\"" -f2)
+kitty -T bar-update sh -c 'paru -Sua --noconfirm && killall -SIGUSR1 py3status && printf "%s " "Press enter to exit"; read ans'
+i3-msg workspace $workspace
