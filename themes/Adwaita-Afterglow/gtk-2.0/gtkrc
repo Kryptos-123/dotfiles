@@ -130,7 +130,7 @@ style "murrine-default" {
   glazestyle     = 0   # 0 = flat highlight, 1 = curved highlight,
                  # 2 = concave style, 3 = top curved highlight,
                  # 4 = beryl highlight
-  gradient_shades = {1.55, 1.40, 1.40, 1.35}
+  gradient_shades   = { 1.01, 1.0, 1.0, .99 }
   handlestyle     = 0   # three simple lines
   highlight_shade   = 1.0  # set highlight amount for buttons or widgets
   lightborder_shade  = 1.2  # sets lightborder amount for buttons or widgets
