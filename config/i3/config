@@ -13,7 +13,7 @@ set $mod Mod4
 exec_always --no-startup-id autotiling
 exec --no-startup-id polkit-dumb-agent &
 exec --no-startup-id libinput-gestures &
-exec --no-startup-id xautolock -time 10 -locker 'lock' &
+exec --no-startup-id xautolock -time 10 -locker 'lock' -detectsleep &
 exec --no-startup-id gnome-keyring-daemon --start
 exec --no-startup-id nitrogen --restore 
 exec --no-startup-id picom &
