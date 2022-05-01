@@ -1,8 +1,8 @@
 #!/bin/sh
 hour=$(date +"%H")
 time=$(date +"%H:%M:%S")
-date=$(date +"%e %b %Y")
-ydate=$(date --date="yesterday" +"%e %b %Y")
+date=$(date +"%d %b %Y")
+ydate=$(date --date="yesterday" +"%d %b %Y")
 to=$(cat periodical.conf | jq -r '.to')
 from=$(cat periodical.conf | jq -r '.from')
 pass=$(cat periodical.conf | jq -r '.pass')
