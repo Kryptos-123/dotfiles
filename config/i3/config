@@ -11,10 +11,11 @@
 set $refresh_i3status killall -SIGUSR1 py3status
 set $mod Mod4
 exec_always --no-startup-id autotiling
-exec --no-startup-id libinput-gestures
-exec --no-startup-id xautolock -time 10 -locker 'lock'
+exec --no-startup-id polkit-dumb-agent &
+exec --no-startup-id libinput-gestures &
+exec --no-startup-id xautolock -time 10 -locker 'lock' &
 exec --no-startup-id gnome-keyring-daemon --start
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id nitrogen --restore 
 exec --no-startup-id picom &
 exec --no-startup-id setxkbmap -option compose:rctrl
 exec --no-startup-id greenclip daemon &
@@ -51,7 +52,7 @@ floating_modifier $mod
 
 bindsym --release Ctrl+Mod1+Escape exec xkill
 bindsym $mod+e exec pcmanfm
-bindsym $mod+Shift+Ctrl+e exec gksudo pcmanfm
+bindsym $mod+Shift+Ctrl+e exec $(pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY pcmanfm)
 bindsym $mod+l exec lock
 bindsym $mod+z exec gtk-launch atril.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
