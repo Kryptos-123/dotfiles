@@ -11,7 +11,6 @@
 set $refresh_i3status killall -SIGUSR1 py3status
 set $mod Mod4
 exec_always --no-startup-id autotiling
-exec --no-startup-id sxhkd &
 exec --no-startup-id polkit-dumb-agent &
 exec --no-startup-id libinput-gestures &
 exec --no-startup-id xautolock -time 10 -locker 'lock' -detectsleep &
@@ -49,6 +48,8 @@ bindsym $mod+XF86AudioLowerVolume exec --no-startup-id volume mic-down
 bindsym $mod+XF86AudioMute exec --no-startup-id volume mic-mute
 bindsym XF86MonBrightnessUp exec brightness up
 bindsym XF86MonBrightnessDown exec brightness down
+bindsym XF86PowerOff exec "rofi -show power-menu -modi power-menu:'rofi-power-menu --choose shutdown --confirm shutdown' -show-icons"
+bindsym $mod+XF86PowerOff exec systemctl poweroff
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
