@@ -1,3 +1,3 @@
 #!/bin/sh
 kitty -T bar-update sh -c 'paru -Syu --noconfirm && killall -SIGUSR1 py3status'
-i3-msg workspace previous
+i3-msg workspace prev
