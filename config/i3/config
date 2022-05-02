@@ -48,8 +48,7 @@ bindsym $mod+XF86AudioLowerVolume exec --no-startup-id volume mic-down
 bindsym $mod+XF86AudioMute exec --no-startup-id volume mic-mute
 bindsym XF86MonBrightnessUp exec brightness up
 bindsym XF86MonBrightnessDown exec brightness down
-bindsym XF86PowerOff exec "rofi -show power-menu -modi power-menu:'rofi-power-menu --choose shutdown --confirm shutdown' -show-icons"
-bindsym $mod+XF86PowerOff exec systemctl poweroff
+bindsym XF86PowerOff exec powerbutton 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
