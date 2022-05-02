@@ -6,6 +6,21 @@ charge_full=$(cat /sys/class/power_supply/BAT0/charge_full)
 current_now=$(cat /sys/class/power_supply/BAT0/current_now)
 date=$(date +"%S")
 color="#f8f8f8"
+cycle=$(cat /home/mridul/.cache/bat)
+if [ "$1" == "cycle" ];then
+            case $cycle in
+            0)
+                echo 1 > /home/mridul/.cache/bat
+                py3-cmd refresh external_script bat
+                exit
+            ;;
+            1)
+                echo 0 > /home/mridul/.cache/bat
+                py3-cmd refresh external_script bat
+                exit
+            ;;
+        esac
+fi
 case $status in
     Full)
         icon=" "
@@ -41,10 +56,19 @@ case $status in
         color="#e3aa4d"
     ;;
 esac
-if [ "$time" != "" ]; then
-    echo " $icon $capacity% $time"
-    echo "$color"
-else
+
+case $cycle in
+    0)
     echo " $icon $capacity%"
     echo "$color"
+    ;;
+    1)
+    if [ "$time" != "" ]; then
+        echo " $icon $time"
+        echo "$color"
+    else
+        echo " $icon $capacity%"
+        echo "$color"
 fi
+;;
+esac
