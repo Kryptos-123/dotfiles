@@ -1,0 +1,4 @@
+XF86PowerOff; XF86PowerOff
+    exec systemctl shutdown
+XF86PowerOff;
+    exec rofi -show power-menu -modi power-menu:'rofi-power-menu --choose shutdown --confirm shutdown' -show-icons
