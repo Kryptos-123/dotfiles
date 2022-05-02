@@ -132,6 +132,7 @@ alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pac
 
 alias mount-network-drives="/home/mridul/mount-network-drives.sh"
 alias unmount-network-drives="/home/mridul/unmount-network-drives.sh"
+alias periodical-log="cat /var/log/periodical.log | less"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
