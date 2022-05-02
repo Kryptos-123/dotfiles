@@ -58,9 +58,9 @@ external_script vol {
 arch_updates {
 	format = "   {pacman}/{aur}"
 	hide_if_zero = true
-	on_click 1 = "exec pacmanupgrade"
-	on_click 2 = "exec pacparuupgrade"
-	on_click 3 = "exec paruupgrade"
+	on_click 1 = "exec bar-update pacman"
+	on_click 2 = "exec bar-update pacparu"
+	on_click 3 = "exec bar-update paru"
 	}
 
 external_script net {
