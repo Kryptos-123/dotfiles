@@ -74,8 +74,8 @@ external_script net {
 external_script bat {
         format = " {output}"
 	script_path = "bar-bat"
-	on_click 1 = "exec rofi -show power-menu -modi power-menu:rofi-power-menu -show-icons"
-    on_click 3 = "exec bar-bat cycle"
+    on_click 1 = "exec bar-bat cycle"
+	on_click 3 = "exec rofi -show power-menu -modi power-menu:rofi-power-menu -show-icons"
 	cache_timeout = 10
 	}
 
