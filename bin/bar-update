@@ -1,0 +1,20 @@
+#!/bin/sh
+if [ "$1" == "paru" ] || [ "$1" == "pacman" ] || [ "$1" == "pacparu" ];then
+    case $1 in 
+        paru)
+            command="paru -Sua --noconfirm && killall -SIGUSR1 py3status"
+        ;;
+        pacman)
+            command="sudo pacman -Syu --noconfirm && killall -SIGUSR1 py3status"
+        ;;
+        pacparu)
+            command="paru -Syu --noconfirm && killall -SIGUSR1 py3status"
+        ;;
+    esac
+    kitty -T bar-update sh -c "exec $command"
+    if [ $(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2) == "Update" ];then
+        i3-msg workspace prev
+    fi
+else
+    exit
+fi
