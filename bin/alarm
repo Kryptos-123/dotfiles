@@ -6,7 +6,10 @@ minute=
 second=
 if [ "$1" == "--gui" ]; then
     date=$(date "+%H:%M:%S")
-    yad --form --field=\ Time:LBL "" --field=:CB ^$(echo $date | cut -d: -f 1 )!00!01!02!03!04!05!06!07!08!09!10!11!12!13!14!15!16!17!18!19!20!21!22!23 --field=:CB ^$(echo $date | cut -d: -f 2 )!00!01!02!03!04!05!06!07!08!09!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59 --field=:CB ^$(echo $date | cut -d: -f 3 )!00!01!02!03!04!05!06!07!08!09!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59 --field=\ \ Message ""  --columns=5 --separator=, > /home/mridul/.cache/alarmgui
+    labelhour=$(echo $date | cut -d: -f 1)
+    labelminute=$(echo $date | cut -d: -f 2)
+    labelsecond=$(echo $date | cut -d: -f 3)
+    yad --form --field=\ Time:LBL "" --field=:CB $(echo "00!01!02!03!04!05!06!07!08!09!10!11!12!13!14!15!16!17!18!19!20!21!22!23" | sed "s/$labelhour/^$labelhour/g") --field=:CB $(echo "00!01!02!03!04!05!06!07!08!09!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59" | sed "s/$labelminute/^$labelminute/g") --field=:CB $(echo "00!01!02!03!04!05!06!07!08!09!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59" | sed "s/$labelsecond/^$labelsecond/g") --field=\ \ Message ""  --columns=5 --separator=, > /home/mridul/.cache/alarmgui
     hour=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 2)
     minute=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 3)
     second=$(cat /home/mridul/.cache/alarmgui | cut -d , -f 4)
