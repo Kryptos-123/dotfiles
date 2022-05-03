@@ -3,17 +3,32 @@ status=$(playerctl status 2>&1)
 title=$(playerctl metadata title)
 artist=$(playerctl metadata artist)
 length=$(echo $title | wc -m)
+cycle=$(cat /home/mridul/.cache/play)
 case $1 in 
     bar)
-        if [ "$length" -gt 10 ]; then
-            title=$(echo $title | cut -c1-10)..
-        fi
-        case $status in
-            "Playing")
-                echo "  $title "
+        case $cycle in
+            0)
+            case $status in
+                "Playing")
+                    echo "  "
+                ;;
+                "Paused")
+                    echo "  "
+                ;;
+            esac
             ;;
-            "Paused")
-                echo "  $title "
+            1)
+            if [ "$length" -gt 10 ]; then
+                title=$(echo $title | cut -c1-10)..
+            fi
+            case $status in
+                "Playing")
+                    echo "  $title "
+                ;;
+                "Paused")
+                    echo "  $title "
+                ;;
+            esac
             ;;
         esac
     exit
@@ -34,6 +49,20 @@ case $1 in
         playerctl volume 1
         fi
         exit
+    ;;
+    cycle)
+        case $cycle in
+            0)
+                echo 1 > /home/mridul/.cache/play
+                py3-cmd refresh external_script play
+                exit
+            ;;
+            1)
+                echo 0 > /home/mridul/.cache/play
+                py3-cmd refresh external_script play
+                exit
+            ;;
+        esac
     ;;
 esac
 

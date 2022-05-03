@@ -1,9 +1,37 @@
 #!/bin/sh
 ssid=$(nmcli -t -f active,ssid dev wifi  | grep yes | sed 's/yes://g')
-if [ "$ssid" == "" ]; then
-    echo " 睊 Disconnected"
-    echo "#d3a04d"
-else
-    echo " 直 $ssid"
-    echo "#f8f8f8"
+cycle=$(cat /home/mridul/.cache/net)
+if [ "$1" == "cycle" ];then
+            case $cycle in
+            0)
+                echo 1 > /home/mridul/.cache/net
+                py3-cmd refresh external_script net
+                exit
+            ;;
+            1)
+                echo 0 > /home/mridul/.cache/net
+                py3-cmd refresh external_script net
+                exit
+            ;;
+        esac
 fi
+case $cycle in
+    0)
+    if [ "$ssid" == "" ]; then
+        echo " 睊 "
+        echo "#d3a04d"
+    else
+        echo " 直 "
+        echo "#f8f8f8"
+    fi
+    ;;
+    1)
+    if [ "$ssid" == "" ]; then
+        echo " 睊 Disconnected"
+        echo "#d3a04d"
+    else
+        echo " 直 $ssid"
+        echo "#f8f8f8"
+    fi
+    ;;
+esac
