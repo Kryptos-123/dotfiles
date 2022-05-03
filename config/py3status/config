@@ -86,6 +86,7 @@ external_script clock {
 	script_path = "bar-clock"
 	cache_timeout = 1
 	on_click 1 = "exec bar-clock time && killall -SIGUSR1 py3status"
+    on_click 2 = "exec alarm --gui"
 	on_click 3 = "exec bar-clock date && killall -SIGUSR1 py3status"
 	}
 
