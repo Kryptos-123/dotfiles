@@ -254,6 +254,7 @@ smart_gaps on
 gaps inner 5
 default_border pixel 1
 default_floating_border pixel 1
+hide_edge_borders both
 for_window [title="^Lofi Hip-Hop - mpv$"] move scratchpad
 for_window [title="^bar-update$"] move container to workspace Update
 for_window [class="Yad"] floating enable
