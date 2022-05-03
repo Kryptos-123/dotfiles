@@ -199,17 +199,16 @@ bindsym $mod+r mode "resize"
 bar {
 	colors {
 		#background #1f444d
-		background #00000000
-		focused_workspace  #00000000 #00000000 #f8f8f8
-		inactive_workspace #00000000 #00000000 #676767
-		urgent_workspace  #00000000 #00000000 #a53c23
+		background #151515
+		focused_workspace  #151515 #151515 #f8f8f8
+		inactive_workspace #151515 #151515 #676767
+		urgent_workspace  #151515 #151515 #a53c23
 	}
         position top
 #	font pango:Hack Nerd Font Mono 12
 	height 32
 	font pango:JetBrainsMono Nerd Font Medium 12
 	status_command py3status ; i3-msg restart
-    i3bar_command i3bar -t
 }
 
 bindsym Print exec flameshot full -p /home/mridul/Pictures/Screenshots
