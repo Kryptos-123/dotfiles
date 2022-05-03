@@ -13,7 +13,7 @@ set $mod Mod4
 exec_always --no-startup-id autotiling
 exec --no-startup-id polkit-dumb-agent &
 exec --no-startup-id libinput-gestures &
-exec --no-startup-id xautolock -time 10 -locker 'lock' -detectsleep &
+exec --no-startup-id xautolock -time 10 -locker 'dm-tool lock' -detectsleep &
 exec --no-startup-id gnome-keyring-daemon --start
 exec --no-startup-id nitrogen --restore 
 exec --no-startup-id picom &
@@ -199,16 +199,17 @@ bindsym $mod+r mode "resize"
 bar {
 	colors {
 		#background #1f444d
-		background #151515
-		focused_workspace  #151515 #151515 #f8f8f8
-		inactive_workspace #151515 #151515 #676767
-		urgent_workspace  #151515 #151515 #a53c23
+		background #000000DE
+		focused_workspace  #000000DE #000000DE #f8f8f8
+		inactive_workspace #000000DE #000000DE #676767
+		urgent_workspace  #000000DE #000000DE #a53c23
 	}
         position top
 #	font pango:Hack Nerd Font Mono 12
 	height 32
 	font pango:JetBrainsMono Nerd Font Medium 12
 	status_command py3status ; i3-msg restart
+    i3bar_command i3bar -t
 }
 
 bindsym Print exec flameshot full -p /home/mridul/Pictures/Screenshots
@@ -225,6 +226,7 @@ bindsym $mod+minus move scratchpad
 bindsym $mod+plus scratchpad show, floating toggle
 
 # set primary gruvbox colorscheme colors
+set $highlight #547c99
 set $bg #151515
 set $red #a53c23
 set $green #7b9246
@@ -237,9 +239,9 @@ set $darkgray #505050
 
 # blue gruvbox
 # class                 border|backgr|text|indicator|child_border
-client.focused          $blue $blue $darkgray #547c99 $darkgray
-client.focused_inactive $darkgray $darkgray $yellow 547c99 $darkgray
-client.unfocused        $darkgray $darkgray $yellow 547c99 $darkgray
+client.focused          $highlight $blue $darkgray $highlight $highlight 
+client.focused_inactive $darkgray $darkgray $yellow $darkgray $darkgray
+client.unfocused        $darkgray $darkgray $yellow $darkgray $darkgray
 client.urgent           $red $red $white $red $red
 
 # Media player controls
@@ -250,8 +252,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 smart_gaps on
 gaps inner 5
-default_border pixel 0
-default_floating_border pixel 0
+default_border pixel 1
+default_floating_border pixel 1
 for_window [title="^Lofi Hip-Hop - mpv$"] move scratchpad
 for_window [title="^bar-update$"] move container to workspace Update
 for_window [class="Yad"] floating enable
