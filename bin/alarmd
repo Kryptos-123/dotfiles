@@ -15,7 +15,7 @@ notify-send "Alarm set for $1 with message \"$2\""
 while true
 do
     if [ "$1" == "$(date +"%H:%M:%S")" ];then
-        notify-send -u critical "Alarm: $2" -i "/usr/share/icons/Papirus-Dark/symbolic/status/alarm-symbolic.svg"
+        notify-send -u critical "Alarm: $2"
         paplay /usr/share/sounds/Pop/stereo/alert/alarm-clock-elapsed.oga
         exit
     else
