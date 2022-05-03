@@ -20,18 +20,12 @@ case $cycle in
     if [ "$ssid" == "" ]; then
         echo " 睊 "
         echo "#d3a04d"
-    else
-        echo " 直 "
-        echo "#f8f8f8"
     fi
     ;;
     1)
     if [ "$ssid" == "" ]; then
         echo " 睊 Disconnected"
         echo "#d3a04d"
-    else
-        echo " 直 $ssid"
-        echo "#f8f8f8"
     fi
     ;;
 esac
