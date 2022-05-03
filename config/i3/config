@@ -257,3 +257,6 @@ for_window [title="^Lofi Hip-Hop - mpv$"] move scratchpad
 for_window [title="^bar-update$"] move container to workspace Update
 for_window [class="Yad"] floating enable
 for_window [class="Virt-viewer"] move container to workspace VM, workspace VM
+for_window [class="zoom"] floating enable
+for_window [class="zoom" title="Zoom - Free Account"] floating disable
+for_window [class="zoom" title="Zoom Meeting"] floating disable
