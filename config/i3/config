@@ -200,10 +200,10 @@ bindsym $mod+r mode "resize"
 bar {
 	colors {
 		#background #1f444d
-		background #151515EE
-		focused_workspace  #151515EE #151515EE #f8f8f8
-		inactive_workspace #151515EE #151515EE #676767
-		urgent_workspace  #151515EE #151515EE #a53c23
+		background #151515DD
+		focused_workspace  #151515DD #151515DD #f8f8f8
+		inactive_workspace #151515DD #151515DD #676767
+		urgent_workspace  #151515DD #151515DD #a53c23
 	}
         position top
 #	font pango:Hack Nerd Font Mono 12
