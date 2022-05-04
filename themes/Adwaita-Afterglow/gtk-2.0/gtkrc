@@ -184,7 +184,7 @@ style "murrine-button" = "murrine-wider" {
  bg[SELECTED] = @bg_color
 
  engine "murrine" {
- gradient_shades = {1.55, 1.40, 1.40, 1.35}
+    gradient_shades = {1.55, 1.40, 1.40, 1.35}
     contrast    = .72
  }
 
