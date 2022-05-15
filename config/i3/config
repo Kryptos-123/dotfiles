@@ -12,6 +12,7 @@ set $refresh_i3status killall -SIGUSR1 py3status
 set $mod Mod4
 exec_always --no-startup-id autotiling
 exec --no-startup-id polkit-dumb-agent &
+exec --no-startup-id eval "$(ssh-agent -s)" &
 exec --no-startup-id libinput-gestures &
 exec --no-startup-id xautolock -time 10 -locker 'dm-tool lock' -detectsleep &
 exec --no-startup-id gnome-keyring-daemon --start
