@@ -59,7 +59,7 @@ dunstify "$volume""     """ -i "$icon_name" -t 1000 -h int:value:"$volume" -h st
 function send_notification_mic {
         volume_mic=`get_volume_mic`
     if [ "$volume_mic" = "0" ]; then
-            icon_name="/home/mridul/Desktop/mic-volume-muted.svg"
+            icon_name="/home/mridul/.icons/mic-volume-muted.svg"
     dunstify "$volume_mic""      " -i "$icon_name" -t 1000 -h int:value:"$volume_mic" -h string:synchronous:"─" --replace=555
         else
             if [  "$volume_mic" -lt "10" ]; then
