@@ -264,3 +264,6 @@ for_window [class="Virt-viewer"] move container to workspace VM, workspace VM
 for_window [class="zoom"] floating enable
 for_window [class="zoom" title="Zoom - Free Account"] floating disable
 for_window [class="zoom" title="Zoom Meeting"] floating disable
+for_window [floating] resize set 1280 720
+floating_minimum_size 384 x 216
+floating_maximum_size 1920 x 1080
