@@ -217,10 +217,12 @@ case $1 in
         case $cycle in
             0)
                 echo 1 > /home/mridul/.cache/vol
+                py3-cmd refresh external_script vol
                 exit
             ;;
             1)
                 echo 0 > /home/mridul/.cache/vol
+                py3-cmd refresh external_script vol
                 exit
             ;;
         esac
