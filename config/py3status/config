@@ -7,7 +7,7 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
+	colors = true
 	interval = 1
 	separator = ""
 	markup = "pango"
@@ -28,7 +28,7 @@ order += "external_script bat"
 order += "external_script clock"
 
 external_script playosd {
-        format = " {output}"
+	format = " {output}"
 	on_click 1 = "exec playosd bar-toggle"
 	on_click 3 = "exec playosd cycle"
     on_click 4 = "exec playosd bar-up"
@@ -38,7 +38,7 @@ external_script playosd {
 	}
 
 external_script net {
-        format = "{output}"
+	format = "{output}"
 	on_click 1 = "exec networkmanager_dmenu"
 	on_click 2 = "exec nm-connection-editor"
 	on_click 3 = "exec bar-net cycle"
@@ -47,7 +47,7 @@ external_script net {
 	}
 
 external_script bright {
-        format = "{output}"
+	format = "{output}"
 	on_click 4 = "exec brightness bar-up 8"
 	on_click 5 = "exec brightness bar-down 8"
 	script_path = "brightness bar"
@@ -55,7 +55,7 @@ external_script bright {
 }
 
 external_script vol {
-        format = " {output}"
+	format = " {output}"
 	on_click 1 = "exec volume bar-mute"
 	on_click 3 = "exec volume cycle"
 	on_click 2 = "exec pavucontrol"
@@ -74,7 +74,7 @@ arch_updates {
 	}
 
 external_script bat {
-        format = " {output}"
+	format = " {output}"
 	script_path = "bar-bat"
     on_click 1 = "exec bar-bat cycle"
 	on_click 3 = "exec rofi -show power-menu -modi power-menu:rofi-power-menu -show-icons"
@@ -82,7 +82,7 @@ external_script bat {
 	}
 
 external_script clock {
-        format = " {output} "
+	format = " {output} "
 	script_path = "bar-clock"
 	cache_timeout = 1
 	on_click 1 = "exec bar-clock time && killall -SIGUSR1 py3status"
