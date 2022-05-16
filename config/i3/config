@@ -236,7 +236,7 @@ set $darkgray #505050
 client.focused          $highlight $blue $darkgray $highlight $highlight 
 client.focused_inactive $darkgray $darkgray $yellow $darkgray $darkgray
 client.unfocused        $darkgray $darkgray $yellow $darkgray $darkgray
-client.urgent           $red $red $white $red $red
+client.urgent           $red $red #f8f8f8 $red $red
 
 # Media player controls
 bindsym XF86AudioPlay exec playosd
