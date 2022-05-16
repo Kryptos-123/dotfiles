@@ -59,15 +59,15 @@ esac
 
 case $cycle in
     0)
-    echo " $icon $capacity%"
+    echo " $icon   $capacity%"
     echo "$color"
     ;;
     1)
     if [ "$time" != "" ]; then
-        echo " $icon $time"
+        echo " $icon   $time"
         echo "$color"
     else
-        echo " $icon $capacity%"
+        echo " $icon   $capacity%"
         echo "$color"
 fi
 ;;

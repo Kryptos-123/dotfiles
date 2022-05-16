@@ -67,7 +67,7 @@ case $1 in
         elif [ $brightness -le 100 ];then
                 icon=""
         fi
-        echo " $icon $brightness%"
+        echo " $icon   $brightness%"
         echo "#f8f8f8"
         ;;
     bar-up)

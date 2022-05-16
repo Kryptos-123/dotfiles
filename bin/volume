@@ -187,7 +187,7 @@ case $1 in
         0)
             volume=`get_volume`
             if is_mute ; then
-                echo " 婢 $volume%"
+                echo " 婢  $volume%"
                 echo "#e3aa4d"
             else
                 if [ $volume -lt 30 ];then
@@ -197,17 +197,17 @@ case $1 in
                 elif [ $volume -le 100 ];then
                     icon="墳"
                 fi
-                echo " $icon $volume%"
+                echo " $icon  $volume%"
                 echo "#f8f8f8"
             fi
             ;;
         1)
         volume_mic=`get_volume_mic`
         if is_mute_mic ; then
-            echo "  $volume_mic%"
+            echo "   $volume_mic%"
             echo "#e3aa4d"
         else
-            echo "  $volume_mic%"
+            echo "   $volume_mic%"
             echo "#f8f8f8"
         fi
         ;;

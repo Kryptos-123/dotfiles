@@ -47,26 +47,26 @@ case $1 in
 esac
 case $format in 
     0)
-        echo "  $time"
+        echo "   $time"
         echo "#f8f8f8"
         exit
     ;;
     1)
-        echo "  $time12"
+        echo "   $time12"
         echo "#f8f8f8"
         exit
     ;;
     2)
-        echo "  $time $date"
+        echo "   $time $date"
         echo "#f8f8f8"
         exit
     ;;
     3)
-        echo "  $time12 $date"
+        echo "   $time12 $date"
         echo "#f8f8f8"
         exit
     ;;
 esac
-echo "  $time"
+echo "   $time"
 echo "#f8f8f8"
 echo 0 > /home/mridul/.cache/clock
