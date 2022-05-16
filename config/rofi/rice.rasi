@@ -12,7 +12,7 @@
 element-icon { size: 2ch ; }
 * {
     /* Theme settings */
-    highlight: bold underline #ffffff;
+    highlight: underline #9fbd5b;
     scrollbar: true;
 
     /* Gruvbox dark colors */
