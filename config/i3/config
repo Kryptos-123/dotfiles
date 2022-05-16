@@ -10,20 +10,18 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $refresh_i3status killall -SIGUSR1 py3status
 set $mod Mod4
-exec_always --no-startup-id autotiling
+exec_always --no-startup-id autotiling &
 exec --no-startup-id xset s 600 600
-exec --no-startup-id xss-lock -l -- betterlockscreen -l
+exec --no-startup-id xss-lock -l -- betterlockscreen -l &
 exec --no-startup-id polkit-dumb-agent &
 exec --no-startup-id eval "$(ssh-agent -s)" &
 exec --no-startup-id libinput-gestures &
-exec --no-startup-id gnome-keyring-daemon --start
 exec --no-startup-id nitrogen --restore 
 exec --no-startup-id picom &
 exec --no-startup-id setxkbmap -option compose:rctrl
 exec --no-startup-id greenclip daemon &
 exec --no-startup-id dunst &
 exec --no-startup-id play-with-mpv &
-exec --no-startup-id xrdb ~/.Xresources
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Roboto Regular 12
