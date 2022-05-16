@@ -1,8 +1,8 @@
 #!/bin/sh
 format=$(cat /home/mridul/.cache/clock)
 date=$(date +"%d-%m-%y")
-time=$(date +"%H:%M:%S")
-time12=$(date +"%I:%M:%S %p")
+time=$(date +"%H:%M")
+time12=$(date +"%I:%M %p")
 case $1 in
     date)
         case $format in 
