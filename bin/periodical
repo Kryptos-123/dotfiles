@@ -3,11 +3,11 @@ hour=$(date +"%H")
 time=$(date +"%H:%M:%S")
 date=$(date +"%d %b %Y")
 ydate=$(date --date="yesterday" +"%d %b %Y")
-to=$(cat periodical.conf | jq -r '.to')
-from=$(cat periodical.conf | jq -r '.from')
-pass=$(cat periodical.conf | jq -r '.pass')
-lockdate=$(sed -n 2p $HOME/.periodical_lock)
-lock=$(sed -n 1p $HOME/.periodical_lock)
+to=$(cat /home/mridul/.config/periodical.conf | jq -r '.to')
+from=$(cat /home/mridul/.config/periodical.conf | jq -r '.from')
+pass=$(cat /home/mridul/.config/periodical.conf | jq -r '.pass')
+lockdate=$(sed -n 2p /home/mridul/.periodical_lock)
+lock=$(sed -n 1p /home/mridul/.periodical_lock)
 periodicals=(The\ Hindu The\ New\ York\ Times Linux\ Magazine)
 if ([ "$hour" -ge 10 ] && [ "$lockdate" != "$date" ] && [ "$lock" == "0" ] && [ "$1" != "-f" ] && [ "$1" != "--force" ]) ;then
     reason=0
@@ -22,8 +22,8 @@ if [ "$reason" == "0" ] || [ "$reason" == "1" ];then
         sleep 1
         done
     fi
-    echo 1 > $HOME/.periodical_lock
-    echo $ydate >> $HOME/.periodical_lock
+    echo 1 > /home/mridul/.periodical_lock
+    echo $ydate >> /home/mridul/.periodical_lock
     notify-send -a Periodical\ Download "Starting Download" -i calibre
     cat /var/log/periodical.log > /var/log/periodical.log.old
     echo "--- $date: $time STARTING---" > /var/log/periodical.log
@@ -39,8 +39,8 @@ if [ "$reason" == "0" ] || [ "$reason" == "1" ];then
     done
     echo -e "\n--- $date: $time DONE ---" >> /var/log/periodical.log
     notify-send -a Periodical\ Download "Finished Successfully" -i calibre
-    echo 0 > $HOME/.periodical_lock
-    echo $date >> $HOME/.periodical_lock
+    echo 0 > /home/mridul/.periodical_lock
+    echo $date >> /home/mridul/.periodical_lock
 else
     if [ "$hour" -lt 10 ];then
         echo "--- $date: $time ---" | tee -a /var/log/periodical.log
