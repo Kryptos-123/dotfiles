@@ -1,19 +1,18 @@
 /* ==========================================================================
    Rofi color theme
 
-   Based on the Gruvbox color scheme for Vim by morhetz
+   Based on the Afterglow color scheme for Sublime Text by YabataDesign
    https://github.com/morhetz/gruvbox
 
-   File: gruvbox-dark.rasi
-   Desc: Gruvbox dark color theme for Rofi
-   Author: bardisty <b@bah.im>
-   Source: https://github.com/bardisty/gruvbox-rofi
-   Modified: Mon Feb 12 2018 04:08:43 PST -0800
+   File: rice.rasi
+   Desc: Afterglow dark color theme for Rofi
+   Author: mridul <mridulagarwal160906@gmail.com>
+   Source: https://github.com/Kryptos-123/dotfiles
    ========================================================================== */
 element-icon { size: 1.8ch ; }
 * {
     /* Theme settings */
-    highlight: bold underline;
+    highlight: bold underline #ffffff;
     scrollbar: true;
 
     /* Gruvbox dark colors */
