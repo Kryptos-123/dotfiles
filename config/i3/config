@@ -210,7 +210,7 @@ bar {
 #	font pango:Hack Nerd Font Mono 12
 	height 32
 	font pango:JetBrainsMono Nerd Font Medium 12
-	status_command py3status ; i3-msg restart
+	status_command sleep 1 && py3status ; i3-msg restart
     i3bar_command i3bar -t
 }
 
