@@ -34,7 +34,7 @@ icons[shutdown]="/usr/share/icons/Papirus/48x48/apps/system-shutdown.svg"
 icons[cancel]="\u00d7"
 
 declare -A actions
-actions[lockscreen]="dm-tool lock" 
+actions[lockscreen]="loginctl lock-session" 
 #actions[switchuser]="???"
 actions[logout]="i3-msg exit"
 actions[suspend]="systemctl suspend"
