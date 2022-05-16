@@ -23,10 +23,10 @@ case $1 in
             fi
             case $status in
                 "Playing")
-                    echo "  $title "
+                    echo "    $title "
                 ;;
                 "Paused")
-                    echo "  $title "
+                    echo "    $title "
                 ;;
             esac
             ;;
