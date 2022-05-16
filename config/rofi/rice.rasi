@@ -9,7 +9,7 @@
    Author: mridul <mridulagarwal160906@gmail.com>
    Source: https://github.com/Kryptos-123/dotfiles
    ========================================================================== */
-element-icon { size: 1.8ch ; }
+element-icon { size: 2ch ; }
 * {
     /* Theme settings */
     highlight: bold underline #ffffff;
