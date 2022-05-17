@@ -72,8 +72,7 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 bindsym XF86Search exec rofi -modi drun -show drun -show-icons
-bindsym $mod+Shift+d exec rofi -modi drun -show drun -show-icons -drun-show-actions
-bindsym $mod+d exec rofi -modi drun -show drun -show-icons
+bindsym $mod+d exec rofi -modi drun -show drun -show-icons -drun-show-actions
 bindsym Mod1+Tab exec i3-msg "[con_id=\"$(cat /tmp/last_focus)\"] focus"
 bindsym $mod+Tab exec rofi -modi window -show window -show-icons
 # There also is i3-dmenu-desktop which only displays applications shipping a
