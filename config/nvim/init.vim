@@ -31,3 +31,4 @@ highlight GitGutterAdd    ctermfg=2
 highlight GitGutterChange ctermfg=3
 highlight GitGutterDelete ctermfg=1
 autocmd BufWritePost * GitGutter
+autocmd VimEnter * GitGutterAll
