@@ -6,6 +6,7 @@ Plug 'ervandew/supertab'
 Plug 'danilo-augusto/vim-afterglow'
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
+Plug 'xiyaowong/nvim-transparent'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 set mouse=a
@@ -22,3 +23,5 @@ let g:mkdp_auto_start = 1
 " specify browser to open preview page
 " default: ''
 let g:mkdp_browser = 'qutebrowser'
+
+let g:transparent_enabled = v:true
