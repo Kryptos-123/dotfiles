@@ -16,8 +16,7 @@ exec --no-startup-id xss-lock -l -- betterlockscreen -l &
 exec --no-startup-id polkit-dumb-agent &
 exec --no-startup-id eval "$(ssh-agent -s)" &
 exec --no-startup-id libinput-gestures &
-exec --no-startup-id nitrogen --restore &
-exec --no-startup-id picom &
+exec --no-startup-id picom --experimental-backends &
 exec --no-startup-id setxkbmap -option compose:rctrl &
 exec --no-startup-id greenclip daemon &
 exec --no-startup-id dunst &
@@ -194,15 +193,15 @@ bindsym $mod+r mode "resize"
 bar {
 	colors {
 		#background #1f444d
-		background #151515DD
-		focused_workspace  #151515DD #151515DD #f8f8f8
-		inactive_workspace #151515DD #151515DD #676767
-		urgent_workspace  #151515DD #151515DD #a53c23
+		background #151515CC
+		focused_workspace  #151515CC #151515CC #f8f8f8
+		inactive_workspace #151515CC #151515CC #676767
+		urgent_workspace  #151515CC #151515CC #a53c23
 	}
         position top
 #	font pango:Hack Nerd Font Mono 12
 	height 32
-	status_command sleep 1 && py3status ; i3-msg restart
+	status_command py3status ; i3-msg restart
     i3bar_command i3bar -t
 }
 
