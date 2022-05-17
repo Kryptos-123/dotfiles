@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
-Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ervandew/supertab'
 Plug 'danilo-augusto/vim-afterglow'
@@ -25,3 +25,9 @@ let g:mkdp_auto_start = 1
 let g:mkdp_browser = 'qutebrowser'
 
 let g:transparent_enabled = v:true
+hi SignColumn cterm=NONE ctermbg=NONE ctermfg=NONE
+let g:gitgutter_set_sign_backgrounds = 1
+highlight GitGutterAdd    ctermfg=2
+highlight GitGutterChange ctermfg=3
+highlight GitGutterDelete ctermfg=1
+autocmd BufWritePost * GitGutter
