@@ -24,11 +24,5 @@ let g:mkdp_auto_start = 1
 " default: ''
 let g:mkdp_browser = 'qutebrowser'
 
-let g:transparent_enabled = v:true
-hi SignColumn cterm=NONE ctermbg=NONE ctermfg=NONE
-let g:gitgutter_set_sign_backgrounds = 1
-highlight GitGutterAdd    ctermfg=2
-highlight GitGutterChange ctermfg=3
-highlight GitGutterDelete ctermfg=1
 autocmd BufWritePost * GitGutter
 autocmd VimEnter * GitGutterAll
