@@ -57,10 +57,11 @@ floating_modifier $mod
 bindsym --release Ctrl+Mod1+Escape exec xkill
 bindsym $mod+e exec pcmanfm
 bindsym $mod+Shift+Ctrl+e exec $(pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY pcmanfm)
-bindsym $mod+l exec lock
+bindsym $mod+l exec loginctl lock-session
 bindsym $mod+z exec gtk-launch atril.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
 bindsym $mod+w exec gtk-launch chromium.desktop
+bindsym $mod+period exec rofimoji
 
 # start a terminal
 bindsym $mod+Return exec kitty
