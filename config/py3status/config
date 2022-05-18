@@ -19,6 +19,7 @@ py3status {
 	separator = true
 	separator_block_width = 0
 	}
+order += "external_script title"
 order += "external_script playosd"
 order += "external_script net"
 order += "external_script bright"
@@ -26,6 +27,12 @@ order += "external_script vol"
 order += "arch_updates"
 order += "external_script bat"
 order += "external_script clock"
+
+external_script title {
+	format = " {output}"
+	script_path = "i3-title bar"
+	cache_timeout = -1
+	}
 
 external_script playosd {
 	format = " {output}"

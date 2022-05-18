@@ -11,7 +11,8 @@
 set $refresh_i3status killall -SIGUSR1 py3status
 set $mod Mod4
 exec_always --no-startup-id autotiling &
-exec_always --no-startup-id i3-alttab &
+exec --no-startup-id i3-alttab &
+exec --no-startup-id i3-title &
 exec --no-startup-id xset s 600 600 &
 exec --no-startup-id xss-lock -l -- betterlockscreen -l &
 exec --no-startup-id polkit-dumb-agent &
