@@ -16,7 +16,8 @@ exec --no-startup-id xset s 600 600 &
 exec --no-startup-id xss-lock -l -- betterlockscreen -l &
 exec --no-startup-id polkit-dumb-agent &
 exec --no-startup-id eval "$(ssh-agent -s)" &
-exec --no-startup-id libinput-gestures &
+exec --no-startup-id libinput-gestures-setup restart
+exec --no-startup-id dex -a &
 exec --no-startup-id picom --experimental-backends &
 exec --no-startup-id setxkbmap -option compose:rctrl &
 exec --no-startup-id greenclip daemon &
