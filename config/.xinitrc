@@ -32,5 +32,5 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 betterlockscreen -l
-nitrogen --restore &
+wallpaper &
 exec i3

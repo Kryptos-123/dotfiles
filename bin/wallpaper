@@ -1,0 +1,27 @@
+#!/bin/sh
+n=$((1 + $RANDOM % 5))
+case $n in
+    1)
+        image="dotfiles/wallpapers/Reddit/Nitesh Nagda/Fallen God.jpg"
+        lock_image="dotfiles/wallpapers/Lock/Fallen God.png"
+    ;;
+    2)
+        image="dotfiles/wallpapers/Reddit/Quentin Mabille/Mummy.jpg"
+        lock_image="dotfiles/wallpapers/Lock/Mummy.png"
+    ;;
+    3)
+        image="dotfiles/wallpapers/Reddit/Taran Fiddler/An Island Among the Clouds.jpg"
+        lock_image="dotfiles/wallpapers/Lock/An Island Among the Clouds.png"
+    ;;
+    4)
+        image="dotfiles/wallpapers/Reddit/Tomislav Jagnjic/I don't wanna fight.jpg"
+        lock_image="dotfiles/wallpapers/Lock/I don't wanna fight.png"
+    ;;
+    5)
+        image="dotfiles/wallpapers/Dynamic Wallpaper Club/Shack/0.png"
+        lock_image="dotfiles/wallpapers/Lock/Shack.png"
+    ;;
+esac
+touch /home/mridul/.cache/betterlockscreen/current/lock_resize.png
+cp "$lock_image" /home/mridul/.cache/betterlockscreen/current/lock_resize.png
+feh "$image" --bg-fill
