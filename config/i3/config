@@ -218,7 +218,7 @@ bindsym $mod+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-
 bindsym $mod+minus move scratchpad
 
 # Show the first scratchpad window
-bindsym $mod+plus scratchpad show, floating toggle
+bindsym $mod+plus scratchpad show; floating enable
 
 # set primary gruvbox colorscheme colors
 set $highlight #547c99
