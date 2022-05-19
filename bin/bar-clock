@@ -6,11 +6,11 @@ time12=$(date +"%I:%M %p")
 case $1 in
     date)
         case $format in 
-               0)
+            0)
                 echo 2 > /home/mridul/.cache/clock
                 exit
             ;;
-                1)
+            1)
                 echo 3 > /home/mridul/.cache/clock
                 exit
             ;;
@@ -19,18 +19,18 @@ case $1 in
                 exit
             ;;
             3)
-                echo 3 > /home/mridul/.cache/clock
+                echo 1 > /home/mridul/.cache/clock
                 exit
             ;;
             esac
     ;;
     time)
         case $format in 
-               0)
+            0)
                 echo 1 > /home/mridul/.cache/clock
                 exit
             ;;
-                1)
+            1)
                 echo 0 > /home/mridul/.cache/clock
                 exit
             ;;
