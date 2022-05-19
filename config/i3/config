@@ -62,7 +62,7 @@ bindsym $mod+l exec loginctl lock-session
 bindsym $mod+z exec gtk-launch atril.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
 bindsym $mod+w exec gtk-launch chromium.desktop
-bindsym $mod+period exec rofimoji
+bindsym $mod+period exec rofimoji -a clipboard -s medium-light -r emoji
 
 # start a terminal
 bindsym $mod+Return exec kitty
