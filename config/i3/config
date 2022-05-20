@@ -246,7 +246,6 @@ bindsym XF86AudioPlay exec playosd
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-smart_gaps on
 gaps inner 5
 default_border pixel 1
 default_floating_border pixel 1
