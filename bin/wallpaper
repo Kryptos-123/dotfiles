@@ -28,4 +28,4 @@ case $n in
 esac
 touch $HOME/.cache/betterlockscreen/current/lock_resize.png
 feh "$image" --bg-fill
-convert "$lock_image" \( .face -thumbnail x90 \) -gravity west -geometry  +60+330 -fill "rgba( 0, 0, 0, 0.5 )" -strokewidth 0 -draw "rectangle 50,815 453,1023" -gravity west -pointsize 30 -fill white -annotate +160+330 'Mridul Agarwal' -composite .cache/betterlockscreen/current/lock_resize.png
+convert "$lock_image" \( .face -thumbnail x90 \) -gravity west -geometry  +60+330 -fill "rgba( 0, 0, 0, 0.5 )" -strokewidth 0 -draw "roundrectangle 50,815,453,1023,10,10" -gravity west -pointsize 30 -fill white -annotate +160+330 'Mridul Agarwal' -composite .cache/betterlockscreen/current/lock_resize.png
