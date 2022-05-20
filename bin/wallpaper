@@ -1,6 +1,6 @@
 #!/bin/sh
 function random {
-    n=$((1 + $RANDOM % 5))
+    n=$((1 + $RANDOM % 4))
     m=$(cat $HOME/.cache/random)
 }
 while [ $n = $m ]
@@ -18,14 +18,10 @@ case $n in
         lock_image="$HOME/dotfiles/wallpapers/Lock/Mummy.png"
     ;;
     3)
-        image="$HOME/dotfiles/wallpapers/Reddit/Taran Fiddler/An Island Among the Clouds.jpg"
-        lock_image="$HOME/dotfiles/wallpapers/Lock/An Island Among the Clouds.png"
-    ;;
-    4)
         image="$HOME/dotfiles/wallpapers/Reddit/Tomislav Jagnjic/I don't wanna fight.jpg"
         lock_image="$HOME/dotfiles/wallpapers/Lock/I don't wanna fight.png"
     ;;
-    5)
+    4)
         image="$HOME/dotfiles/wallpapers/Dynamic Wallpaper Club/Shack/0.png"
         lock_image="$HOME/dotfiles/wallpapers/Lock/Shack.png"
     ;;
