@@ -255,4 +255,4 @@ for_window [class="Yad"] floating enable
 for_window [class="zoom"] floating enable
 for_window [class="zoom" title="Zoom - Free Account"] floating disable
 for_window [class="zoom" title="Zoom Meeting"] floating disable
-floating_maximum_size 1600 x 900
+floating_maximum_size 1920 x 1080
