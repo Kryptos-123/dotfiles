@@ -18,8 +18,8 @@ case $1 in
             esac
             ;;
             1)
-            if [ "$length" -gt 15 ]; then
-                title=$(echo $title | cut -c1-15)..
+            if [ "$length" -gt 25 ]; then
+                title=$(echo $title | cut -c1-25)..
             fi
             case $status in
                 "Playing")
