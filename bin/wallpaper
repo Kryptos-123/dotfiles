@@ -1,13 +1,17 @@
 #!/bin/sh
-function random {
-    n=$((1 + $RANDOM % 7))
-    m=$(cat $HOME/.cache/random)
-}
-while [ $n = $m ]
-do
-    random
-done
-echo $n > $HOME/.cache/random
+if [ -z "$1" ];then
+    function random {
+        n=$((1 + $RANDOM % 7))
+        m=$(cat $HOME/.cache/random)
+    }
+    while [ $n = $m ]
+    do
+        random
+    done
+    echo $n > $HOME/.cache/random
+else
+    n=$1
+fi
 case $n in
     1)
         image="$HOME/dotfiles/wallpapers/Reddit/Nitesh Nagda/Fallen God.jpg"
@@ -37,7 +41,11 @@ case $n in
         image="$HOME/dotfiles/wallpapers/WallpaperAccess/WallpaperAccess 3.png"
         lock_image="$HOME/dotfiles/wallpapers/Lock/WallpaperAccess 3.png"
     ;;
+    *)
+        echo "Error: Not valid index"
+        exit
+    ;;
 esac
 touch $HOME/.cache/betterlockscreen/current/lock_resize.png
 feh "$image" --bg-fill
-convert "$lock_image" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "rgba( 0, 0, 0, 0.5 )" -strokewidth 0 -draw "roundrectangle 50,815,453,1023,4,4" -gravity west -pointsize 30 -fill white -annotate +160+330 'Mridul Agarwal' -composite $HOME/.cache/betterlockscreen/current/lock_resize.png
+convert "$lock_image" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,453,1023,4,4" -gravity west -pointsize 30 -fill white -annotate +160+330 'Mridul Agarwal' -composite $HOME/.cache/betterlockscreen/current/lock_resize.png
