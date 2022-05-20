@@ -1,6 +1,6 @@
 #!/bin/sh
 function random {
-    n=$((1 + $RANDOM % 4))
+    n=$((1 + $RANDOM % 7))
     m=$(cat $HOME/.cache/random)
 }
 while [ $n = $m ]
@@ -25,7 +25,19 @@ case $n in
         image="$HOME/dotfiles/wallpapers/Dynamic Wallpaper Club/Shack/0.png"
         lock_image="$HOME/dotfiles/wallpapers/Lock/Shack.png"
     ;;
+    5)
+        image="$HOME/dotfiles/wallpapers/WallpaperAccess/WallpaperAccess 1.png"
+        lock_image="$HOME/dotfiles/wallpapers/Lock/WallpaperAccess 1.png"
+    ;;
+    6)
+        image="$HOME/dotfiles/wallpapers/WallpaperAccess/WallpaperAccess 2.png"
+        lock_image="$HOME/dotfiles/wallpapers/Lock/WallpaperAccess 2.png"
+    ;;
+    7)
+        image="$HOME/dotfiles/wallpapers/WallpaperAccess/WallpaperAccess 3.png"
+        lock_image="$HOME/dotfiles/wallpapers/Lock/WallpaperAccess 3.png"
+    ;;
 esac
 touch $HOME/.cache/betterlockscreen/current/lock_resize.png
 feh "$image" --bg-fill
-convert "$lock_image" \( face_rounded.png -thumbnail x90 \) -gravity west -geometry +60+330 -fill "rgba( 0, 0, 0, 0.5 )" -strokewidth 0 -draw "roundrectangle 50,815,453,1023,7,7" -gravity west -pointsize 30 -fill white -annotate +160+330 'Mridul Agarwal' -composite .cache/betterlockscreen/current/lock_resize.png
+convert "$lock_image" \( .face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "rgba( 0, 0, 0, 0.5 )" -strokewidth 0 -draw "roundrectangle 50,815,453,1023,4,4" -gravity west -pointsize 30 -fill white -annotate +160+330 'Mridul Agarwal' -composite .cache/betterlockscreen/current/lock_resize.png
