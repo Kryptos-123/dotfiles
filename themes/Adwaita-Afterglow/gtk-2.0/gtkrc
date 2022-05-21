@@ -146,7 +146,7 @@ style "murrine-default" {
   progressbarstyle  = 0   # 0 = flat, 1 = stripped, 2 = blocks
   reliefstyle   = 0   # 0 = flat, 1 = inset, 2 = shadow, 3 = shadow with gradient, 4 = stronger shadow with gradient
   rgba        = FALSE # FALSE = disabled, TRUE = enabled
-  roundness      = 4   # 0 = squared, 1 = old default, more will
+  roundness      = 0   # 0 = squared, 1 = old default, more will
                  # increase roundness
   scrollbarstyle   = 0   # 0 = nothing, 1 = circles, 2 = handles,
                  # 3 = diagonal stripes, 4 = diagonal stripes
