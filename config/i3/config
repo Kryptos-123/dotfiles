@@ -52,7 +52,6 @@ bindsym $mod+XF86AudioMute exec --no-startup-id volume mic-mute
 bindsym XF86MonBrightnessUp exec brightness up
 bindsym XF86MonBrightnessDown exec brightness down
 bindsym XF86PowerOff exec rofi -show power-menu -modi power-menu:"rofi-power-menu --choose shutdown --confirm shutdown" -show-icons -kb-select-1 XF86PowerOff 
-bindsym $mod+Shift+d exec xdg-open "$(locate -e -i --regex "/home/$USER/[^\.]+" | rofi -location 0  -threads 0 -dmenu -i -p " ")"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
