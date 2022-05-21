@@ -16,7 +16,7 @@ while true
 do
     if [ "$1" == "$(date +"%H:%M:%S")" ];then
         notify-send -u critical "Alarm: $2"
-        paplay /usr/share/sounds/Pop/stereo/alert/alarm-clock-elapsed.oga
+        paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga
         exit
     else
         sleep 1;
