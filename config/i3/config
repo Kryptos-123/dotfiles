@@ -245,8 +245,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 gaps inner 5
-default_border pixel 1
-default_floating_border pixel 1
+default_border pixel 2
+default_floating_border pixel 2
 hide_edge_borders both
 for_window [title="^bar-update$"] move container to workspace Update
 for_window [class="Yad"] floating enable
