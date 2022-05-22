@@ -11,12 +11,10 @@
 set $refresh_i3status killall -SIGUSR1 py3status
 set $mod Mod4
 exec_always --no-startup-id autotiling &
-exec --no-startup-id gnome-keyring-daemon &
 exec --no-startup-id i3-alttab &
 exec --no-startup-id xset s 600 600 &
 exec --no-startup-id xss-lock -l -- betterlockscreen -l &
 exec --no-startup-id polkit-dumb-agent &
-exec --no-startup-id eval "$(ssh-agent -s)" &
 exec --no-startup-id libinput-gestures-setup restart
 exec --no-startup-id dex -a &
 exec --no-startup-id picom --experimental-backends &
@@ -62,7 +60,7 @@ bindsym $mod+Shift+Ctrl+e exec $(pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHOR
 bindsym $mod+l exec loginctl lock-session
 bindsym $mod+z exec gtk-launch atril.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
-bindsym $mod+w exec gtk-launch chromium.desktop
+bindsym $mod+w exec gtk-launch google-chrome.desktop
 bindsym $mod+period exec rofimoji -a clipboard -s neutral -r emoji
 bindsym $mod+Shift+period exec rofimoji -a clipboard -s medium-light -r emoji
 
