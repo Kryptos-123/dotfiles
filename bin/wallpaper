@@ -1,7 +1,7 @@
 #!/bin/sh
 if [ -z "$1" ];then
     function random {
-        n=$((1 + $RANDOM % 6))
+        n=$((1 + $RANDOM % 7))
         m=$(cat $HOME/.cache/random)
     }
     while [ $n = $m ]
@@ -27,8 +27,8 @@ case $n in
         lock_image="$HOME/dotfiles/wallpapers/Lock/I don't wanna fight.png"
     ;;
     4)
-        image="$HOME/dotfiles/wallpapers/Dynamic Wallpaper Club/Shack/0.png"
-        lock_image="$HOME/dotfiles/wallpapers/Lock/Shack.png"
+        image="$HOME/dotfiles/wallpapers/Reddit/Chris Rahn/Jegantha, the Wellspring.jpg"
+        lock_image="$HOME/dotfiles/wallpapers/Lock/Jegantha, the Wellspring.png"
     ;;
     5)
         image="$HOME/dotfiles/wallpapers/WallpaperAccess/WallpaperAccess 1.png"
@@ -37,6 +37,10 @@ case $n in
     6)
         image="$HOME/dotfiles/wallpapers/WallpaperAccess/WallpaperAccess 3.png"
         lock_image="$HOME/dotfiles/wallpapers/Lock/WallpaperAccess 3.png"
+    ;;
+    7)
+        image="$HOME/dotfiles/wallpapers/Reddit/Stefan Koidl/Dragon Bones.png"
+        lock_image="$HOME/dotfiles/wallpapers/Lock/Dragon Bones.png"
     ;;
     *)
         echo "Error: Not valid index"
