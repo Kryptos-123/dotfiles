@@ -5,7 +5,7 @@ configuration {
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
-	font: "JetBrainsMono Nerd Font 16";
+	font: "Roboto Regular 16";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/
@@ -145,4 +145,4 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
-@theme "rice"
+@theme "afterglow"
