@@ -59,7 +59,7 @@ bindsym --release Ctrl+Mod1+Escape exec xkill
 bindsym $mod+e exec pcmanfm
 bindsym $mod+Shift+Ctrl+e exec $(pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY pcmanfm)
 bindsym $mod+l exec loginctl lock-session
-bindsym $mod+z exec gtk-launch atril.desktop
+bindsym $mod+z exec gtk-launch zathura.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
 bindsym $mod+w exec gtk-launch google-chrome.desktop
 bindsym $mod+period exec rofimoji -a clipboard -s neutral -r emoji
