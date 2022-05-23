@@ -12,9 +12,8 @@
 element-icon { size: 2.3ch ; }
 * {
     /* Theme settings */
-    highlight: underline #9fbd5b;
+    highlight: underline #bde368;
     scrollbar: true;
-
 
 	afterglow-dark-bg0:          #151515;
     afterglow-dark-bg0-soft:     #151515;
