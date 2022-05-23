@@ -46,4 +46,8 @@ case $n in
 esac
 touch $HOME/.cache/betterlockscreen/current/lock_resize.png
 feh "$image" --bg-fill
-convert "$lock_image" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,458,1023,4,4" -gravity west -pointsize 30 -fill white -annotate +160+325 "$user" -gravity west -pointsize 19 -fill white -annotate +160+355 "$email" -composite $HOME/.cache/betterlockscreen/current/lock_resize.png
+if [ -z $email ];then
+    convert "$lock_image" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,453,1023,4,4" -gravity west -pointsize 30 -fill white -annotate +160+330 "$user" -composite $HOME/.cache/betterlockscreen/current/lock_resize.png
+else
+    convert "$lock_image" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,458,1023,4,4" -gravity west -pointsize 30 -fill white -annotate +160+325 "$user" -gravity west -pointsize 19 -fill white -annotate +160+355 "$email" -composite $HOME/.cache/betterlockscreen/current/lock_resize.png
+fi
