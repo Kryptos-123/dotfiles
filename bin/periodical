@@ -1,4 +1,21 @@
 #!/bin/sh
+for var in "$@"
+do
+case $var in
+    -f | --force)
+        reason=1
+    ;;
+    -h | --help)
+        echo "-f, --force         Force download ignoring all checks"
+        echo "-h, --help          Show this help message"
+        exit
+    ;;
+    *)
+        echo "Erorr: Invalid option '$var'"
+        echo "Try 'periodical -h' for more information"
+        exit
+esac
+done
 hour=$(date +"%H")
 time=$(date +"%H:%M:%S")
 date=$(date +"%d %b %Y")
@@ -11,10 +28,6 @@ lock=$(sed -n 1p /home/mridul/.periodical_lock)
 periodicals=(The\ Hindu The\ New\ York\ Times Linux\ Magazine)
 if ([ "$hour" -ge 10 ] && [ "$lockdate" != "$date" ] && [ "$lock" == "0" ] && [ "$1" != "-f" ] && [ "$1" != "--force" ]) ;then
     reason=0
-else
-    if ([ "$1" == "-f" ] || [ "$1" == "--force" ]);then
-    reason=1
-    fi
 fi
 if [ "$reason" == "0" ] || [ "$reason" == "1" ];then
     if [ "$reason" == "0" ];then
