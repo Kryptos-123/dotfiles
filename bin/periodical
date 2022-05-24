@@ -24,7 +24,7 @@ if [ "$reason" == "0" ] || [ "$reason" == "1" ];then
     fi
     echo 1 > /home/mridul/.periodical_lock
     echo $ydate >> /home/mridul/.periodical_lock
-    notify-send -a Periodical\ Download "Starting Download" -i calibre
+    notify-send -a Periodical\ Download "Periodical Download" "Starting Download" -i calibre
     cat /var/log/periodical.log > /var/log/periodical.log.old
     echo "--- $date: $time STARTING---" > /var/log/periodical.log
     for periodical in "${periodicals[@]}"
@@ -38,7 +38,7 @@ if [ "$reason" == "0" ] || [ "$reason" == "1" ];then
         calibre-smtp -a "/tmp/$periodical $(date +'%a, %e %b %Y').mobi" -s "Periodical E-mail" -u "$from" -p "$pass" -r "smtp.gmail.com" -e "SSL" $from $to "$periodical $(date +'%a, %e %b %Y')" -v >> /var/log/periodical.log 2>&1
     done
     echo -e "\n--- $date: $time DONE ---" >> /var/log/periodical.log
-    notify-send -a Periodical\ Download "Finished Successfully" -i calibre
+    notify-send -a Periodical\ Download "Periodical Download" "Finished Successfully" -i calibre
     echo 0 > /home/mridul/.periodical_lock
     echo $date >> /home/mridul/.periodical_lock
 else
