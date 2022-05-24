@@ -14,7 +14,7 @@ case $var in
     -h | --help)
         echo "-w, --wall, --wallpaper   Set only wallpaper"
         echo "-l, --lock                Set only lockscreen wallpaper"
-        echo "-n                        Choose specific wallpaper. Eg. '-n=4'"
+        echo "-n                        Choose specific wallpaper. Eg. 'wallpaper -n=4'"
         echo "-h, --help                Display this help message"
         echo "If no option is specified a random wallpaper will be set to both the wallpaper and the lockscreen wallpaper"
         exit
@@ -28,7 +28,8 @@ case $var in
         fi
     ;;
     *)
-        echo "Erorr: Invalid argument \"$var\""
+        echo "Erorr: Invalid option '$var'"
+        echo "Try 'wallpaper -h' for more information"
         exit
     ;;
 esac
