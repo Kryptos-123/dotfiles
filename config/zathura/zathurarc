@@ -4,8 +4,7 @@ set show-recent false
 set adjust-open width
 set open-first-page false
 set font "Roboto Regular 13"
-map <C-r> feedkeys ":set recolor<Return>:set recolor-keephue true<Return>"
-map <A-r> feedkeys ":set recolor<Return>:set recolor-keephue false<Return>"
+map <C-r> set recolor
 map <C-o> feedkeys ":open "
 map <C-t> exec zathura-tabbed
 set window-title-basename true
