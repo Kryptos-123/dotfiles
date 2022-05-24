@@ -18,26 +18,32 @@ case $n in
     1)
         image="$HOME/dotfiles/wallpapers/Reddit/Nitesh Nagda/Fallen God.jpg"
         lock_image="$HOME/dotfiles/wallpapers/Lock/Fallen God.png"
+        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Fallen God.png"
     ;;
     2)
         image="$HOME/dotfiles/wallpapers/Reddit/Quentin Mabille/Mummy.jpg"
         lock_image="$HOME/dotfiles/wallpapers/Lock/Mummy.png"
+        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Mummy.png"
     ;;
     3)
         image="$HOME/dotfiles/wallpapers/Reddit/Tomislav Jagnjic/I don't wanna fight.jpg"
         lock_image="$HOME/dotfiles/wallpapers/Lock/I don't wanna fight.png"
+        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - I don't wanna fight.png"
     ;;
     4)
         image="$HOME/dotfiles/wallpapers/Reddit/Stefan Koidl/Dragon Bones.png"
         lock_image="$HOME/dotfiles/wallpapers/Lock/Dragon Bones.png"
+        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Dragon Bones.png"
     ;;
     5)
         image="$HOME/dotfiles/wallpapers/Reddit/Jocelin Carme/Fallen Champion.jpg"
         lock_image="$HOME/dotfiles/wallpapers/Lock/Fallen Champion.png"
+        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Fallen Champion.png"
     ;;
     6)
         image="$HOME/dotfiles/wallpapers/Reddit/Denis Loebner/Preserved in ice.jpg"
         lock_image="$HOME/dotfiles/wallpapers/Lock/Preserved in ice.png"
+        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Preserved in ice.png"
     ;;
     *)
         echo "Error: Not valid index"
@@ -47,7 +53,7 @@ esac
 touch $HOME/.cache/betterlockscreen/current/lock_resize.png
 feh "$image" --bg-fill
 if [ -z $email ];then
-    convert "$lock_image" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,453,1023,4,4" -gravity west -pointsize 30 -fill white -font Roboto-Regular -annotate +160+330 "$user" -composite $HOME/.cache/betterlockscreen/current/lock_resize.png
+    cp "$lock_image" $HOME/.cache/betterlockscreen/current/lock_resize.png
 else
-    convert "$lock_image" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,458,1023,4,4" -gravity west -pointsize 30 -fill white -font Roboto-Regular -annotate +160+325 "$user" -gravity west -pointsize 19 -fill white -annotate +160+355 "$email" -composite $HOME/.cache/betterlockscreen/current/lock_resize.png
+    cp "$lock_image_email" $HOME/.cache/betterlockscreen/current/lock_resize.png
 fi

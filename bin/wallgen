@@ -1,0 +1,19 @@
+#!/bin/sh
+if [ -z $1 ] || [ ! -d $1 ];then
+    echo "Error: No directory specified"
+else
+    user=$(getent passwd | grep "$USER" | cut -d":" -f5 | cut -d"," -f1)
+    email=$(dconf read /org/bluesabre/mugshot/email | sed "s/'//g")
+    i=0
+    for file in $1/Lock\ Source/*.png;
+    do
+    name=$(basename -- "$file")
+    readablename=$(basename -- "$file" .png)
+    echo "Rendering Lock Screen for wallpaper: $readablename"
+    convert "$file" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,458,1023,4,4" -gravity west -pointsize 30 -fill white -font Roboto-Regular -annotate +160+325 "$user" -gravity west -pointsize 19 -fill white -annotate +160+355 "$email" -composite "$1/Lock/Email - $name"
+    echo "Rendering Lock Screen with E-mail for wallpaper: $readablename"
+    convert "$file" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,458,1023,4,4" -gravity west -pointsize 30 -fill white -font Roboto-Regular -annotate +160+330 "$user" -composite "$1/Lock/$name"
+      ((i=i+1))
+    done
+    echo "Done: Rendered $i wallpapers"
+fi
