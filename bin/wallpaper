@@ -1,5 +1,45 @@
 #!/bin/sh
-if [ -z "$1" ];then
+random=true
+lock=true
+wall=true
+for var in "$@"
+do
+case $var in
+    -l | --lock)
+        wall=false
+    ;;
+    -w | --wall | --wallpaper)
+        lock=false
+    ;;
+    -h | --help)
+        echo "-w, --wall, --wallpaper   Set only wallpaper"
+        echo "-l, --lock                Set only lockscreen wallpaper"
+        echo "-n                        Choose specific wallpaper. Eg. '-n=4'"
+        echo "-h, --help                Display this help message"
+        echo "If no option is specified a random wallpaper will be set to both the wallpaper and the lockscreen wallpaper"
+        exit
+    ;;
+    -n=*)
+        num=$(echo $var | cut -d= -f2)
+        re='^[0-9]+$'
+        if [[ $num =~ $re ]];then
+            n=$num
+            random=false
+        fi
+    ;;
+    *)
+        echo "Erorr: Invalid argument \"$var\""
+        exit
+    ;;
+esac
+done
+
+if [ $lock == "false" ] && [ $wall == "false" ];then
+    lock=true
+    wall=true
+fi
+
+if [ $random == "true" ];then
     function random {
         n=$((1 + $RANDOM % 6))
         m=$(cat $HOME/.cache/random)
@@ -9,9 +49,8 @@ if [ -z "$1" ];then
         random
     done
     echo $n > $HOME/.cache/random
-else
-    n=$1
 fi
+
 user=$(getent passwd | grep "$USER" | cut -d":" -f5 | cut -d"," -f1)
 email=$(dconf read /org/bluesabre/mugshot/email | sed "s/'//g")
 case $n in
@@ -50,10 +89,14 @@ case $n in
         exit
     ;;
 esac
-touch $HOME/.cache/betterlockscreen/current/lock_resize.png
-feh "$image" --bg-fill
-if [ -z $email ];then
-    cp "$lock_image" $HOME/.cache/betterlockscreen/current/lock_resize.png
-else
-    cp "$lock_image_email" $HOME/.cache/betterlockscreen/current/lock_resize.png
+
+if [ $wall == "true" ];then
+    feh "$image" --bg-fill
+fi
+if [ $lock == "true" ];then
+   if [ -z $email ];then
+       cp "$lock_image" $HOME/.cache/betterlockscreen/current/lock_resize.png
+   else
+       cp "$lock_image_email" $HOME/.cache/betterlockscreen/current/lock_resize.png
+   fi
 fi
