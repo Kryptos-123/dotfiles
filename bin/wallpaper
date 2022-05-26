@@ -42,7 +42,7 @@ fi
 
 if [ $random == "true" ];then
     function random {
-        n=$((1 + $RANDOM % 6))
+        n=$((1 + $RANDOM % 7))
         m=$(cat $HOME/.cache/random)
     }
     while [ $n = $m ]
@@ -84,6 +84,11 @@ case $n in
         image="$HOME/dotfiles/wallpapers/Reddit/Denis Loebner/Preserved in ice.jpg"
         lock_image="$HOME/dotfiles/wallpapers/Lock/Preserved in ice.png"
         lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Preserved in ice.png"
+    ;;
+    7)
+        image="$HOME/dotfiles/wallpapers/Falligar the Behemoth.png"
+        lock_image="$HOME/dotfiles/wallpapers/Lock/Falligar the Behemoth.png"
+        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Falligar the Behemoth.png"
     ;;
     *)
         echo "Error: Not valid index"
