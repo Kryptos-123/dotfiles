@@ -62,8 +62,8 @@ bindsym $mod+l exec loginctl lock-session
 bindsym $mod+z exec gtk-launch zathura.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
 bindsym $mod+w exec gtk-launch google-chrome.desktop
-bindsym $mod+period exec rofimoji -a clipboard -s neutral -r emoji
-bindsym $mod+Shift+period exec rofimoji -a clipboard -s medium-light -r emoji
+bindsym $mod+period exec rofimoji -a copy -s neutral -r emoji
+bindsym $mod+Shift+period exec rofimoji -a copy -s medium-light -r emoji
 
 # start a terminal
 bindsym $mod+Return exec kitty
@@ -252,8 +252,8 @@ hide_edge_borders both
 for_window [title="^bar-update$"] move container to workspace Update
 for_window [class="Yad"] floating enable
 for_window [class="zoom.real "] floating enable
-for_window [window_role="Msgcompose" class="(?i)Thunderbird"] floating enable
-for_window [window_role="Calendar" class="(?i)Thunderbird"] floating enable
+for_window [class="Thunderbird"] floating enable
+for_window [window_role="3pane" class="Thunderbird"] floating disable
 for_window [window_role="pop-up" class="(?i)*"] floating enable
 for_window [class="zoom.real " title="Zoom - Free Account"] floating disable
 for_window [class="zoom.real " title="Zoom Meeting"] floating disable
