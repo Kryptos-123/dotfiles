@@ -1,38 +1,60 @@
 #!/bin/sh
+length=$(cat $HOME/dotfiles/wallpapers/wallpaper.list | wc -l)
 random=true
 lock=true
 wall=true
+
 for var in "$@"
 do
-case $var in
-    -l | --lock)
-        wall=false
-    ;;
-    -w | --wall | --wallpaper)
-        lock=false
-    ;;
-    -h | --help)
-        echo "-w, --wall, --wallpaper   Set only wallpaper"
-        echo "-l, --lock                Set only lockscreen wallpaper"
-        echo "-n                        Choose specific wallpaper. Eg. 'wallpaper -n=4'"
-        echo "-h, --help                Display this help message"
-        echo "If no option is specified a random wallpaper will be set to both the wallpaper and the lockscreen wallpaper"
-        exit
-    ;;
-    -n=*)
-        num=$(echo $var | cut -d= -f2)
-        re='^[0-9]+$'
-        if [[ $num =~ $re ]];then
-            n=$num
-            random=false
-        fi
-    ;;
-    *)
-        echo "Erorr: Invalid option '$var'"
-        echo "Try 'wallpaper -h' for more information"
-        exit
-    ;;
-esac
+    case $var in
+    
+        -l | --lock)
+            wall=false
+        ;;
+        -w | --wall | --wallpaper)
+            lock=false
+        ;;
+        -h | --help)
+            echo "-w, --wall, --wallpaper   Set only wallpaper"
+            echo "-l, --lock                Set only lockscreen wallpaper"
+            echo "-n                        Choose specific wallpaper. Eg. 'wallpaper -n=4'"
+            echo "-h, --help                Display this help message"
+            echo "--list                    List available wallpapers"
+            echo "If no option is specified a random wallpaper will be set to both the wallpaper and the lockscreen wallpaper"
+            exit
+        ;;
+    
+        -n=*)
+            num=$(echo $var | cut -d= -f2)
+            re='^[0-9]+$'
+            if [[ $num =~ $re ]];then
+                n=$num
+                random=false
+            else
+                echo "Error : Specified index is not a number"
+                exit
+            fi
+        ;;
+    
+        --list)
+            l=1
+            for l in {1..7}
+            do
+                list=$(sed -n $l\p $HOME/dotfiles/wallpapers/wallpaper.list)
+                basename=$(basename "$(expr "x$list" : 'x\(.*\)\.')")
+                echo -e "Index $l : \e]8;;file:///$list\a$basename\e]8;;\a"
+                ((l=l+1))
+            done
+            exit
+        ;;
+    
+        *)
+            echo "Erorr: Invalid option '$var'"
+            echo "Try 'wallpaper -h' for more information"
+            exit
+        ;;
+    
+    esac
 done
 
 if [ $lock == "false" ] && [ $wall == "false" ];then
@@ -42,7 +64,7 @@ fi
 
 if [ $random == "true" ];then
     function random {
-        n=$((1 + $RANDOM % 7))
+        n=$((1 + $RANDOM % $length))
         m=$(cat $HOME/.cache/random)
     }
     while [ $n = $m ]
@@ -52,50 +74,29 @@ if [ $random == "true" ];then
     echo $n > $HOME/.cache/random
 fi
 
+if [ $n -gt $length ];then
+    echo "Error: Not a valid index"
+    exit
+fi
+
 user=$(getent passwd | grep "$USER" | cut -d":" -f5 | cut -d"," -f1)
 email=$(dconf read /org/bluesabre/mugshot/email | sed "s/'//g")
-case $n in
-    1)
-        image="$HOME/dotfiles/wallpapers/Reddit/Nitesh Nagda/Fallen God.jpg"
-        lock_image="$HOME/dotfiles/wallpapers/Lock/Fallen God.png"
-        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Fallen God.png"
-    ;;
-    2)
-        image="$HOME/dotfiles/wallpapers/Reddit/Quentin Mabille/Mummy.jpg"
-        lock_image="$HOME/dotfiles/wallpapers/Lock/Mummy.png"
-        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Mummy.png"
-    ;;
-    3)
-        image="$HOME/dotfiles/wallpapers/Reddit/Tomislav Jagnjic/I don't wanna fight.jpg"
-        lock_image="$HOME/dotfiles/wallpapers/Lock/I don't wanna fight.png"
-        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - I don't wanna fight.png"
-    ;;
-    4)
-        image="$HOME/dotfiles/wallpapers/Reddit/Stefan Koidl/Dragon Bones.png"
-        lock_image="$HOME/dotfiles/wallpapers/Lock/Dragon Bones.png"
-        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Dragon Bones.png"
-    ;;
-    5)
-        image="$HOME/dotfiles/wallpapers/Reddit/Jocelin Carme/Fallen Champion.jpg"
-        lock_image="$HOME/dotfiles/wallpapers/Lock/Fallen Champion.png"
-        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Fallen Champion.png"
-    ;;
-    6)
-        image="$HOME/dotfiles/wallpapers/Reddit/Denis Loebner/Preserved in ice.jpg"
-        lock_image="$HOME/dotfiles/wallpapers/Lock/Preserved in ice.png"
-        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Preserved in ice.png"
-    ;;
-    7)
-        image="$HOME/dotfiles/wallpapers/Falligar the Behemoth.png"
-        lock_image="$HOME/dotfiles/wallpapers/Lock/Falligar the Behemoth.png"
-        lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - Falligar the Behemoth.png"
-    ;;
-    *)
-        echo "Error: Not valid index"
-        exit
-    ;;
-esac
 
+image=$(sed -n $n\p $HOME/dotfiles/wallpapers/wallpaper.list)
+basename=$(basename "$(expr "x$image" : 'x\(.*\)\.')")
+lock_image="$HOME/dotfiles/wallpapers/Lock/$basename.png"
+lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - $basename.png"
+
+if ! test -f "$image"; then
+    echo "Error: Wallpaper '$image' is missing"
+    exit
+elif ! test -f "$lock_image"; then
+    echo "Error: Lock Screen '$lock_image' is missing"
+    exit
+elif ! test -f "$lock_image_email"; then
+    echo "Error: Lock Screen '$lock_image_email' is missing"
+    exit
+fi
 if [ $wall == "true" ];then
     feh "$image" --bg-fill
 fi
