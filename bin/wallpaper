@@ -1,5 +1,10 @@
 #!/bin/sh
-length=$(cat $HOME/dotfiles/wallpapers/wallpaper.list | wc -l)
+rm $HOME/dotfiles/wallpapers/Random/wallpaper.list
+for file in $HOME/dotfiles/wallpapers/Random/*
+do
+    echo $file >> $HOME/dotfiles/wallpapers/Random/wallpaper.list
+done
+length=$(cat $HOME/dotfiles/wallpapers/Random/wallpaper.list | wc -l)
 random=true
 lock=true
 wall=true
@@ -36,13 +41,15 @@ do
             fi
         ;;
     
-        --list)
+        -l | --list)
             l=1
-            for l in {1..7}
+            while [ $l -le $length ]; 
             do
-                list=$(sed -n $l\p $HOME/dotfiles/wallpapers/wallpaper.list)
-                basename=$(basename "$(expr "x$list" : 'x\(.*\)\.')")
-                echo -e "Index $l : \e]8;;file:///$list\a$basename\e]8;;\a"
+                list_image=$(sed -n $l\p $HOME/dotfiles/wallpapers/Random/wallpaper.list)
+                list_basename=$(basename "$(expr "$list_image" : '\(.*\)\.')")
+                list_lock_image="$HOME/dotfiles/wallpapers/Lock/$list_basename.png"
+                list_lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - $list_basename.png"
+                echo -e "Index $l : \e]8;;file://$list_image\a$list_basename\e]8;;\a (\e]8;;file://$list_lock_image\aLock Screen\e]8;;\a) (\e]8;;$list_lock_image_email\aLock Screen with E-mail\e]8;;\a)"
                 ((l=l+1))
             done
             exit
@@ -82,7 +89,7 @@ fi
 user=$(getent passwd | grep "$USER" | cut -d":" -f5 | cut -d"," -f1)
 email=$(dconf read /org/bluesabre/mugshot/email | sed "s/'//g")
 
-image=$(sed -n $n\p $HOME/dotfiles/wallpapers/wallpaper.list)
+image=$(sed -n $n\p $HOME/dotfiles/wallpapers/Random/wallpaper.list)
 basename=$(basename "$(expr "x$image" : 'x\(.*\)\.')")
 lock_image="$HOME/dotfiles/wallpapers/Lock/$basename.png"
 lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - $basename.png"
