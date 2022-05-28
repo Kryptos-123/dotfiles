@@ -34,5 +34,5 @@ fi
 export TZ=Asia/Kolkata
 wallpaper -s
 betterlockscreen -l
-wallpaper -w -n=$(cat $HOME/.cache/random)
+wallpaper -w -n=$(cat $HOME/.cache/random) &
 exec i3
