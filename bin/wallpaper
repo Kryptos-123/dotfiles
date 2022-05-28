@@ -1,9 +1,4 @@
 #!/bin/sh
-rm $HOME/dotfiles/wallpapers/Random/wallpaper.list
-for file in $HOME/dotfiles/wallpapers/Random/*
-do
-    echo $file >> $HOME/dotfiles/wallpapers/Random/wallpaper.list
-done
 length=$(cat $HOME/dotfiles/wallpapers/Random/wallpaper.list | wc -l)
 random=true
 lock=true
@@ -25,6 +20,7 @@ do
             echo "-n, --number              Choose specific wallpaper. Eg. 'wallpaper -n=4'"
             echo "-h, --help                Display this help message"
             echo "-l, --list                List available wallpapers"
+            echo "-u, --update              Update wallpaper list"
             echo "If no option is specified a random wallpaper will be set to both the wallpaper and the lockscreen wallpaper"
             exit
         ;;
@@ -55,6 +51,14 @@ do
             exit
         ;;
     
+        -u | --update)
+            rm $HOME/dotfiles/wallpapers/Random/wallpaper.list
+            for file in $HOME/dotfiles/wallpapers/Random/*
+            do
+                echo $file >> $HOME/dotfiles/wallpapers/Random/wallpaper.list
+            done
+        ;;
+
         *)
             echo "Erorr: Invalid option '$var'"
             echo "Try 'wallpaper -h' for more information"
