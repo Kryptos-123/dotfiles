@@ -45,9 +45,11 @@ do
                 list_basename=$(basename "$(expr "$list_image" : '\(.*\)\.')")
                 list_lock_image="$HOME/dotfiles/wallpapers/Lock/$list_basename.png"
                 list_lock_image_email="$HOME/dotfiles/wallpapers/Lock/Email - $list_basename.png"
-                echo -e "Index $l : \e]8;;file://$list_image\a$list_basename\e]8;;\a (\e]8;;file://$list_lock_image\aLock Screen\e]8;;\a) (\e]8;;$list_lock_image_email\aLock Screen with E-mail\e]8;;\a)"
+                echo -e "Index $l : \e]8;;file://$list_image\a$list_basename\e]8;;\a (\e]8;;file://$list_lock_image\aLock Screen\e]8;;\a) (\e]8;;$list_lock_image_email\aLock Screen with E-mail\e]8;;\a)">> /tmp/list
                 ((l=l+1))
             done
+            cat /tmp/list
+            rm /tmp/list
             exit
         ;;
     
