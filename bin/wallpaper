@@ -57,6 +57,8 @@ do
             do
                 echo $file >> $HOME/dotfiles/wallpapers/Random/wallpaper.list
             done
+            echo "Updated wallpaper list"
+            exit
         ;;
 
         *)
