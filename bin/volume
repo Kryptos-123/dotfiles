@@ -9,17 +9,8 @@ if [ "$2" != "" ];then
 else
         step=3
 fi
-cycle=$(cat /home/mridul/.cache/vol)
 function get_volume {
     amixer -D pulse get Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1
-}
-
-function get_volume_mic {
-    amixer -D pulse get Capture | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1
-}
-
-function is_mute_mic {
-    amixer -D pulse get Capture | grep '%' | grep -oE '[^ ]+$' | grep off > /dev/null
 }
 
 function is_mute {
@@ -56,51 +47,8 @@ dunstify "$volume""     """ -i "$icon_name" -t 1000 -h int:value:"$volume" -h st
 
 }
 
-function send_notification_mic {
-        volume_mic=`get_volume_mic`
-    if [ "$volume_mic" = "0" ]; then
-            icon_name="/home/mridul/.icons/mic-volume-muted.svg"
-    dunstify "$volume_mic""      " -i "$icon_name" -t 1000 -h int:value:"$volume_mic" -h string:synchronous:"─" --replace=555
-        else
-            if [  "$volume_mic" -lt "10" ]; then
-                 icon_name="/home/mridul/.icons/mic-volume-low.svg"
-    dunstify "$volume_mic""     " -i "$icon_name" --replace=555 -t 1000
-        else
-            if [ "$volume_mic" -lt "30" ]; then
-                icon_name="/home/mridul/.icons/mic-volume-low.svg"
-            else
-                if [ "$volume_mic" -lt "70" ]; then
-                    icon_name="/home/mridul/.icons/mic-volume-medium.svg"
-                else
-                    icon_name="/home/mridul/.icons/mic-volume-high.svg"
-                fi
-            fi
-        fi
-    fi
-    # Make the bar with the special character ─ (it's not dash -)
-    # https://en.wikipedia.org/wiki/Box-drawing_character
-#bar=$(seq -s "─" $(($volume_mic/5)) | sed 's/[0-9]//g')
-bar_mic=$(seq -s "─" $(($volume_mic/3)) | sed 's/[0-9]//g' | sed 's/$/─/g')
-# Send the notification
-dunstify "$volume_mic""     """ -i "$icon_name" -t 1000 -h int:value:"$volume_mic" -h string:synchronous:"$bar_mic" --replace=555
-
-}
 
 case $1 in
-    mic-up)
-        # Set the volume on (if it was muted)
-        amixer -D pulse set Capture cap > /dev/null
-        # Up the volume (+ $step%)
-        amixer -D pulse sset Capture $step%+ > /dev/null
-        send_notification_mic
-        py3-cmd refresh external_script vol
-        ;;
-    mic-down)
-        amixer -D pulse set Capture cap > /dev/null
-        amixer -D pulse sset Capture $step%- > /dev/null
-        send_notification_mic
-        py3-cmd refresh external_script vol
-        ;;
     up)
         # Set the volume on (if it was muted)
         amixer -D pulse set Master on > /dev/null
@@ -110,66 +58,28 @@ case $1 in
         py3-cmd refresh external_script vol
         ;;
     bar-up)
-        case $cycle in
-        0)
             # Set the volume on (if it was muted)
             amixer -D pulse set Master on > /dev/null
             # Up the volume (+ $step%)
             amixer -D pulse sset Master $step%+ > /dev/null
             py3-cmd refresh external_script vol
-            ;;
-        1)
-            amixer -D pulse set Capture cap > /dev/null
-            # Up the volume (+ $step%)
-            amixer -D pulse sset Capture $step%+ > /dev/null
-            py3-cmd refresh external_script vol
-        ;;
-    esac
         ;;
     bar-down)
-        case $cycle in
-        0)
             # Set the volume on (if it was muted)
             amixer -D pulse set Master on > /dev/null
             # Up the volume (+ $step%)
             amixer -D pulse sset Master $step%- > /dev/null
             py3-cmd refresh external_script vol
-            ;;
-        1)
-            amixer -D pulse set Capture cap > /dev/null
-            # Up the volume (+ $step%)
-            amixer -D pulse sset Capture $step%- > /dev/null
-            py3-cmd refresh external_script vol
-        ;;
-    esac
         ;;
     bar-mute)
-        case $cycle in
-        0)
             # Toggle mute
         amixer -D pulse set Master 1+ toggle > /dev/null
         py3-cmd refresh external_script vol
-            ;;
-        1)
-            amixer -D pulse set Capture 1+ toggle > /dev/null
-            py3-cmd refresh external_script vol
-        ;;
-    esac
         ;;
     down)
         amixer -D pulse set Master on > /dev/null
         amixer -D pulse sset Master $step%- > /dev/null
         send_notification
-        py3-cmd refresh external_script vol
-        ;;
-    mic-mute)
-            # Toggle mute
-        amixer -D pulse set Capture 1+ toggle > /dev/null
-        if is_mute_mic ; then
-        dunstify -i "/home/mridul/Desktop/mic-volume-muted.svg" --replace=555 -u normal "Mic Mute" -t 1000
-        else
-            send_notification_mic
-        fi
         py3-cmd refresh external_script vol
         ;;
     mute)
@@ -183,9 +93,13 @@ case $1 in
         py3-cmd refresh external_script vol
         ;;
     bar)
-        case $cycle in
-        0)
             volume=`get_volume`
+            if [ $volume = 0 ]; then
+                py3-cmd refresh external_script vol
+                sleep 0.1
+                volume bar
+                exit
+            fi
             if is_mute ; then
                 echo " 婢  $volume%"
                 echo "#e3aa4d"
@@ -201,29 +115,4 @@ case $1 in
                 echo "#f8f8f8"
             fi
             ;;
-        1)
-        volume_mic=`get_volume_mic`
-        if is_mute_mic ; then
-            echo "   $volume_mic%"
-            echo "#e3aa4d"
-        else
-            echo "   $volume_mic%"
-            echo "#f8f8f8"
-        fi
-        ;;
-    esac
-    ;;
-    cycle)
-        case $cycle in
-            0)
-                echo 1 > /home/mridul/.cache/vol
-                py3-cmd refresh external_script vol
-                exit
-            ;;
-            1)
-                echo 0 > /home/mridul/.cache/vol
-                py3-cmd refresh external_script vol
-                exit
-            ;;
-        esac
 esac

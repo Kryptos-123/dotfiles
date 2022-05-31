@@ -115,25 +115,7 @@ alias ll='exa -l --icons --color=always --group-directories-first'  # long forma
 alias lt='exa -aT --icons --color=always --group-directories-first' # tree listing
 alias l.='exa -a | egrep "^\."'
 
-# pacman and yay
-alias pacsyu='sudo pacman -Syyu'                 # update only standard pkgs
-alias yaysua='yay -Sua --noconfirm'              # update only AUR pkgs (yay)
-alias yaysyu='yay -Syu --noconfirm'              # update standard pkgs and AUR pkgs (yay)
-alias parsua='paru -Sua --noconfirm'             # update only AUR pkgs (paru)
-alias parsyu='paru -Syu --noconfirm'             # update standard pkgs and AUR pkgs (paru)
-alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'  # remove orphaned packages
-alias yay='paru'
-# get fastest mirrors
-alias mirror="sudo reflector -f 40 -l 50 --number 15 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-
-alias mount-network-drives="/home/mridul/mount-network-drives.sh"
-alias unmount-network-drives="/home/mridul/unmount-network-drives.sh"
 alias periodical-log="less +F /var/log/periodical.log"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /usr/share/doc/pkgfile/command-not-found.zsh

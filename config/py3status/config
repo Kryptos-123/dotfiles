@@ -57,7 +57,6 @@ external_script bright {
 external_script vol {
 	format = " {output}"
 	on_click 1 = "exec volume bar-mute"
-	on_click 3 = "exec volume cycle"
 	on_click 2 = "exec pavucontrol"
 	on_click 4 = "exec volume bar-up 5"
 	on_click 5 = "exec volume bar-down 5"

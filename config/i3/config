@@ -13,11 +13,12 @@ set $mod Mod4
 exec_always --no-startup-id autotiling &
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent &
 exec --no-startup-id redshift &
+exec --no-startup-id sudo acpid -f -n &
 exec --no-startup-id i3-alttab &
 exec --no-startup-id discover-overlay &
 exec --no-startup-id xset s 600 600 &
 exec --no-startup-id xss-lock -l -- betterlockscreen -l &
-exec --no-startup-id polkit-dumb-agent &
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id libinput-gestures-setup restart
 exec --no-startup-id dex -a &
 exec --no-startup-id picom --experimental-backends &
@@ -64,7 +65,7 @@ bindsym $mod+Shift+Ctrl+e exec $(pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHOR
 bindsym $mod+l exec loginctl lock-session
 bindsym $mod+z exec gtk-launch zathura.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
-bindsym $mod+w exec gtk-launch google-chrome-beta.desktop
+bindsym $mod+w exec gtk-launch google-chrome.desktop
 bindsym $mod+period exec rofimoji -a copy -s neutral -r emoji
 bindsym $mod+Shift+period exec rofimoji -a copy -s medium-light -r emoji
 
