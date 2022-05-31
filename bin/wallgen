@@ -28,16 +28,19 @@ elif [ ! -d $dir/Lock ] || [ ! -d $dir/Lock\ Source ];then
 fi
 user=$(getent passwd | grep "$USER" | cut -d":" -f5 | cut -d"," -f1)
 email=$(dconf read /org/bluesabre/mugshot/email | sed "s/'//g")
+if [ "$email" = "" ];then
+    email=mridulagarwal160906@gmail.com
+fi
 i=0
 for file in $dir/Lock\ Source/*.png;
 do
 name=$(basename -- "$file")
 readablename=$(basename -- "$file" .png)
 echo "Rendering Lock Screen for wallpaper: $readablename"
-convert "$file" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,463,1023,6,6" -gravity west -pointsize 30 -fill white -font Roboto-Regular -annotate +160+318 "$user" -gravity west -pointsize 19 -fill white -annotate +161+348 "$email" -composite "$dir/Lock/Email - $name"
+convert "$file" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,463,1023,6,6" -gravity west -pointsize 30 -fill white -font Roboto -annotate +160+318 "$user" -gravity west -pointsize 19 -fill white -annotate +161+348 "$email" -composite "$dir/Lock/Email - $name"
   ((i=i+1))
 echo "Rendering Lock Screen with E-mail for wallpaper: $readablename"
-convert "$file" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,458,1023,6,6" -gravity west -pointsize 30 -fill white -font Roboto-Regular -annotate +160+330 "$user" -composite "$dir/Lock/$name"
+convert "$file" \( $HOME/.face -thumbnail x90 \) -gravity west -geometry +60+330 -fill "#00000080" -strokewidth 0 -draw "roundrectangle 50,815,458,1023,6,6" -gravity west -pointsize 30 -fill white -font Roboto -annotate +160+330 "$user" -composite "$dir/Lock/$name"
   ((i=i+1))
 done
 echo "Done: Rendered $i wallpapers"
