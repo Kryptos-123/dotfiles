@@ -1,17 +1,14 @@
 #!/bin/sh
-if [ "$1" == "paru" ] || [ "$1" == "pacman" ] || [ "$1" == "pacparu" ];then
+if [ "$1" == "full" ] || [ "$1" == "security" ];then
     case $1 in 
-        paru)
-            command="paru -Sua --noconfirm && killall -SIGUSR1 py3status"
+        full)
+            command="sudo dnf update"
         ;;
-        pacman)
-            command="sudo pacman -Syu --noconfirm && killall -SIGUSR1 py3status"
-        ;;
-        pacparu)
-            command="paru -Syu --noconfirm && killall -SIGUSR1 py3status"
+        security)
+            command="sudo yum update --security"
         ;;
     esac
-    kitty -T bar-update sh -c "exec $command" && py3-cmd refresh arch_updates
+    kitty -T bar-update sh -c "exec $command" && py3-cmd refresh fedora_updates
     if [ $(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).name' | cut -d"\"" -f2) == "Update" ];then
         i3-msg workspace prev
     fi

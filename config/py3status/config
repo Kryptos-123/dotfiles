@@ -11,9 +11,9 @@ general {
 	interval = 1
 	separator = ""
 	markup = "pango"
-	color_good = "#b8ba25"
-	color_degraded = "#fabc2e"
-	color_bad = "#fb4833"
+	color_good = "#f8f8f8"
+	color_degraded = "#e3aa4d"
+	color_bad = "#a53c23"
 }
 py3status {
 	separator = true
@@ -23,7 +23,7 @@ order += "external_script playosd"
 order += "external_script net"
 order += "external_script bright"
 order += "external_script vol"
-order += "arch_updates"
+order += "fedora_updates"
 order += "external_script bat"
 order += "external_script clock"
 
@@ -64,12 +64,13 @@ external_script vol {
 	cache_timeout = -1
 	}
 
-arch_updates {
-	format = "     {pacman}/{aur}"
+fedora_updates {
+	format = "     {updates}"
 	hide_if_zero = true
-	on_click 1 = "exec bar-update pacman"
-	on_click 2 = "exec bar-update pacparu"
-	on_click 3 = "exec bar-update paru"
+    cache_timeout = 300
+    on_click 1 = "exec bar-update full"
+	on_click 3 = "exec bar-update security"
+
 	}
 
 external_script bat {
