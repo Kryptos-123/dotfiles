@@ -10,6 +10,8 @@ def main():
     i3.on('window::move', on_change)
     i3.on('window::close', on_change)
     i3.on('window::new', on_change)
+    i3.on('workspace::move', on_change)
+    i3.on('workspace::focus', on_change)
     # Could use ticks but not implemented in latest release of i3ipc-python
     try:
         i3.main()
