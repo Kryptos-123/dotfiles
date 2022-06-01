@@ -19,8 +19,8 @@ exec --no-startup-id discover-overlay &
 exec --no-startup-id xset s 600 600 &
 exec --no-startup-id xss-lock -l -- betterlockscreen -l &
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id libinput-gestures-setup restart
-exec --no-startup-id dex -a &
+exec --no-startup-id libinput-gestures-setup restart &
+exec --no-startup-id dex-autostart -a &
 exec --no-startup-id setxkbmap -option compose:rctrl &
 exec --no-startup-id greenclip daemon &
 exec --no-startup-id dunst &
@@ -59,8 +59,8 @@ bindsym XF86PowerOff exec rofi -show power-menu -modi power-menu:"rofi-power-men
 floating_modifier $mod
 
 bindsym --release Ctrl+Mod1+Escape exec xkill
-bindsym $mod+e exec pcmanfm
-bindsym $mod+Shift+Ctrl+e exec $(pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY pcmanfm)
+bindsym $mod+e exec thunar 
+bindsym $mod+Shift+Ctrl+e exec $(pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY thunar)
 bindsym $mod+l exec loginctl lock-session
 bindsym $mod+z exec gtk-launch zathura.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
