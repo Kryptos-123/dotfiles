@@ -66,7 +66,7 @@ bindsym $mod+z exec gtk-launch zathura.desktop
 bindsym $mod+m exec gtk-launch mpv.desktop
 bindsym $mod+w exec gtk-launch google-chrome.desktop
 bindsym $mod+period exec rofimoji -a copy -s neutral -r emoji
-bindsym $mod+Shift+period exec rofimoji -a copy -s medium-light -r emoji
+bindsym $mod+Shift+period exec rofimoji -a copy -s ask -r emoji
 
 # start a terminal
 bindsym $mod+Return exec kitty
