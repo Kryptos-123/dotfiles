@@ -17,7 +17,6 @@ exec --no-startup-id picom --experimental-backends &
 exec --no-startup-id sudo acpid -f -n &
 exec --no-startup-id i3-alttab &
 exec --no-startup-id i3-workspace &
-exec --no-startup-id i3-empty &
 exec --no-startup-id discover-overlay &
 exec --no-startup-id xset s 600 600 &
 exec --no-startup-id xss-lock -l -- betterlockscreen -l &
