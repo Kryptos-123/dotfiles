@@ -44,7 +44,7 @@ case $status in
             icon=" "
         elif [ $capacity -lt 90 ];then
             icon=" "
-        elif [ "$capacity" -lt 100 ]; then
+        elif [ "$capacity" -le 100 ]; then
             icon=" "
         else
             icon=" "
