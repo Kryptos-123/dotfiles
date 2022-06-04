@@ -3,19 +3,7 @@
 import i3ipc
 
 last = None
-
-
-def main():
-    i3 = i3ipc.Connection(auto_reconnect=True)
-    update_focus(i3.get_tree().find_focused())
-    i3.on('window::focus', on_focus)
-    # Could use ticks but not implemented in latest release of i3ipc-python
-    try:
-        i3.main()
-    finally:
-        i3.main_quit()
-
-
+i3 = i3ipc.Connection(auto_reconnect=True)
 def on_focus(_, e):
     update_focus(e.container)
 
@@ -25,7 +13,7 @@ def update_focus(container):
     with open('/tmp/last_focus', 'w') as f:
         print(last, file=f)
     last = container.id
-
-
-if __name__ == '__main__':
-    main()
+    
+update_focus(i3.get_tree().find_focused())
+i3.on('window::focus', on_focus)
+i3.main()
