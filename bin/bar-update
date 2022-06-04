@@ -2,10 +2,10 @@
 if [ "$1" == "full" ] || [ "$1" == "security" ];then
     case $1 in 
         full)
-            command="sudo dnf update"
+            command="sudo yum update -y"
         ;;
         security)
-            command="sudo yum update --security"
+            command="sudo yum update --security -y"
         ;;
     esac
     kitty -T bar-update sh -c "exec $command" && py3-cmd refresh fedora_updates
